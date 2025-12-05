@@ -43,14 +43,14 @@
 
 .light-background {
   --background-color: #2f2f3f;
-  --surface-color: #ffffff;
+  --surface-color: #3d688f;
 }
 
 .dark-background {
   --background-color: #2f2f3f;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #252525;
+  --surface-color: #3d688f;
   --contrast-color: #ffffff;
 }
 
@@ -165,7 +165,7 @@ h6 {
 
 .header .logo {
   padding: 10px 15px;
-  background-color: color-mix(in srgb, var(--accent-color) 100%, black 0%);
+  background-color: color-mix(in srgb, var(--accent-color) 90%, black 15%);
   border-radius: 8px;
 }
 
