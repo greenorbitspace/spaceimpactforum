@@ -1304,9 +1304,14 @@ section,
 /*--------------------------------------------------------------
 # Schedule Section
 --------------------------------------------------------------*/
+
 .schedule {
   background-color: color-mix(in srgb, var(--accent-color), transparent 97%);
 }
+
+/* -----------------------------
+   Header + Tab Navigation
+----------------------------- */
 
 .schedule .schedule-header {
   margin-bottom: 60px;
@@ -1315,69 +1320,73 @@ section,
 .schedule .schedule-header .nav-tabs {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
   border-bottom: none;
 }
 
-.schedule .schedule-header .nav-tabs .nav-item .nav-link {
+.schedule .schedule-header .nav-tabs .nav-link {
   background: var(--surface-color);
   border: 2px solid color-mix(in srgb, var(--default-color), transparent 85%);
   border-radius: 16px;
   padding: 20px 28px;
+  text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: center;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--default-color), transparent 92%);
-  color: var(--default-color);
   white-space: nowrap;
+  color: var(--default-color);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--default-color), transparent 92%);
 }
 
-.schedule .schedule-header .nav-tabs .nav-item .nav-link:hover {
+.schedule .schedule-header .nav-tabs .nav-link:hover {
   border-color: var(--accent-color);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 85%);
 }
 
-.schedule .schedule-header .nav-tabs .nav-item .nav-link.active {
+.schedule .schedule-header .nav-tabs .nav-link.active {
   background: var(--accent-color);
   border-color: var(--accent-color);
   color: var(--contrast-color);
 }
 
 @media (max-width: 768px) {
-  .schedule .schedule-header .nav-tabs .nav-item .nav-link {
+  .schedule .schedule-header .nav-tabs .nav-link {
     padding: 16px 20px;
   }
 }
 
-.schedule .schedule-content .session-timeline {
+/* -----------------------------
+   Timeline Structure
+----------------------------- */
+
+.schedule .session-timeline {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
 }
 
-.schedule .schedule-content .session-timeline .session-block {
+.schedule .session-block {
   display: flex;
-  margin-bottom: 32px;
-  position: relative;
   width: 100%;
+  margin-bottom: 32px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-time {
+/* Time Column */
+.schedule .session-time {
   width: 100px;
-  flex-shrink: 0;
   padding-right: 20px;
   text-align: right;
   position: relative;
+  flex-shrink: 0;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-time::after {
+.schedule .session-time::after {
   content: "";
   position: absolute;
-  right: -11px;
   top: 8px;
+  right: -11px;
   width: 20px;
   height: 20px;
   background: var(--accent-color);
@@ -1386,268 +1395,252 @@ section,
   box-shadow: 0 2px 8px color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-time .start {
+.schedule .session-time .start {
   display: block;
   font-size: 16px;
   font-weight: 600;
   color: var(--heading-color);
-  margin-bottom: 2px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-time .end {
+.schedule .session-time .end {
   display: block;
   font-size: 13px;
   color: color-mix(in srgb, var(--default-color), transparent 40%);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card {
+/* -----------------------------
+   Session Card Layout
+----------------------------- */
+
+.schedule .session-card {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+
   background: var(--surface-color);
   border-radius: 16px;
   padding: 28px;
   margin-left: 20px;
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--default-color), transparent 92%);
+
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--default-color), transparent 92%);
   transition: all 0.3s ease;
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card:hover {
+.schedule .session-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 30px color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card.break-card {
+/* Break Card Variant */
+.schedule .session-card.break-card {
   background: color-mix(in srgb, var(--accent-color), transparent 95%);
   border-color: color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card.break-card .session-title {
+.schedule .session-card.break-card .session-title {
   color: var(--accent-color);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info {
-  flex: 1;
-}
+/* -----------------------------
+   Session Information Panels
+----------------------------- */
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta {
+.session-info {}
+
+.session-meta {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .track {
+.session-meta .track {
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .track.keynote {
-  background: color-mix(in srgb, #ff6b6b, transparent 85%);
-  color: #ff6b6b;
-}
+/* Track Colours */
+.track.keynote { background: color-mix(in srgb, #ff6b6b, transparent 85%); color: #ff6b6b; }
+.track.panel { background: color-mix(in srgb, #977dd8, transparent 85%); color: #977dd8; }
+.track.climate { background: color-mix(in srgb, #4ecdc4, transparent 85%); color: #16df4f; }
+.track.economic { background: color-mix(in srgb, #45b7d1, transparent 85%); color: #16df4f; }
+.track.societal { background: color-mix(in srgb, #f7931e, transparent 85%); color: #faa71a; }
+.track.policy   { background: color-mix(in srgb, #f7931e, transparent 85%); color: #f7931e; }
+.track.environment { background: color-mix(in srgb, #58be2f, transparent 85%); color: #58be2f; }
+.track.energy   { background: color-mix(in srgb, #fcc30d, transparent 85%); color: #fcc30d; }
+.track.food   { background: color-mix(in srgb, #e52b3d, transparent 85%); color: #e52b3d; }
+.track.urban  { background: color-mix(in srgb, #fe6a25, transparent 85%); color: #fe6a25; }
+.track.break    { background: color-mix(in srgb, var(--accent-color), transparent 85%); color: var(--accent-color); }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .track.development {
-  background: color-mix(in srgb, #4ecdc4, transparent 85%);
-  color: #4ecdc4;
-}
-
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .track.design {
-  background: color-mix(in srgb, #45b7d1, transparent 85%);
-  color: #45b7d1;
-}
-
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .track.business {
-  background: color-mix(in srgb, #f7931e, transparent 85%);
-  color: #f7931e;
-}
-
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .track.break {
-  background: color-mix(in srgb, var(--accent-color), transparent 85%);
-  color: var(--accent-color);
-}
-
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-meta .room {
+.session-meta .room {
   font-size: 13px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
   font-weight: 500;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-title {
+/* Titles & Description */
+.session-title {
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.3;
   color: var(--heading-color);
   margin-bottom: 12px;
-  line-height: 1.3;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .session-description {
+.session-description {
   font-size: 14px;
-  color: var(--default-color);
   line-height: 1.6;
-  margin-bottom: 16px;
+  color: var(--default-color);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .speaker-info {
+/* Speaker Information */
+.speaker-info {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .speaker-info .speaker-avatar {
+.speaker-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .speaker-info .speaker-details .speaker-name {
+.speaker-name {
   font-size: 14px;
   font-weight: 600;
-  color: var(--heading-color);
-  margin: 0 0 2px 0;
+  margin-bottom: 2px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .session-info .speaker-info .speaker-details .speaker-role {
+.speaker-role {
   font-size: 12px;
   color: color-mix(in srgb, var(--default-color), transparent 40%);
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .add-to-schedule {
+/* -----------------------------
+   Add to Schedule Button
+----------------------------- */
+
+.add-to-schedule {
+  margin-top: auto;
+  align-self: flex-start;
+
   background: color-mix(in srgb, var(--accent-color), transparent 90%);
   border: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);
   border-radius: 12px;
+
   padding: 12px 16px;
-  color: var(--accent-color);
   font-size: 13px;
   font-weight: 500;
+  color: var(--accent-color);
+
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  align-self: flex-start;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .add-to-schedule i {
+.add-to-schedule i {
   margin-right: 6px;
 }
 
-.schedule .schedule-content .session-timeline .session-block .session-card .add-to-schedule:hover {
+.add-to-schedule:hover {
   background: var(--accent-color);
   color: var(--contrast-color);
 }
 
-.schedule .schedule-content .session-timeline .session-block.keynote .session-time::after {
-  background: #ff6b6b;
-}
+/* -----------------------------
+   Timeline Dot Colour by Type
+----------------------------- */
 
-.schedule .schedule-content .session-timeline .session-block.development .session-time::after {
-  background: #4ecdc4;
-}
+.session-block.keynote .session-time::after { background: #ff6b6b; }
+.session-block.development .session-time::after { background: #4ecdc4; }
+.session-block.design .session-time::after { background: #45b7d1; }
+.session-block.business .session-time::after { background: #f7931e; }
+.session-block.break .session-time::after { background: var(--accent-color); }
 
-.schedule .schedule-content .session-timeline .session-block.design .session-time::after {
-  background: #45b7d1;
-}
-
-.schedule .schedule-content .session-timeline .session-block.business .session-time::after {
-  background: #f7931e;
-}
-
-.schedule .schedule-content .session-timeline .session-block.break .session-time::after {
-  background: var(--accent-color);
-}
+/* -----------------------------
+   Mobile Responsive
+----------------------------- */
 
 @media (max-width: 768px) {
-  .schedule .schedule-content .session-timeline::before {
-    left: 80px;
-  }
+  .session-time { width: 70px; }
+  .session-time::after { right: -9px; width: 16px; height: 16px; }
+  .session-time .start { font-size: 14px; }
 
-  .schedule .schedule-content .session-timeline .session-block .session-time {
-    width: 70px;
-  }
-
-  .schedule .schedule-content .session-timeline .session-block .session-time::after {
-    right: -9px;
-    width: 16px;
-    height: 16px;
-  }
-
-  .schedule .schedule-content .session-timeline .session-block .session-time .start {
-    font-size: 14px;
-  }
-
-  .schedule .schedule-content .session-timeline .session-block .session-card {
-    padding: 20px;
-    margin-left: 16px;
+  .session-card {
     flex-direction: column;
+    margin-left: 16px;
+    padding: 20px;
     gap: 16px;
   }
 
-  .schedule .schedule-content .session-timeline .session-block .session-card .session-title {
-    font-size: 18px;
-  }
+  .session-title { font-size: 18px; }
 
-  .schedule .schedule-content .session-timeline .session-block .session-card .add-to-schedule {
+  .add-to-schedule {
     align-self: stretch;
     text-align: center;
   }
 }
 
-.schedule .schedule-actions {
-  text-align: center;
+/* -----------------------------
+   Bottom Buttons (Download etc.)
+----------------------------- */
+
+.schedule-actions {
   margin-top: 60px;
   display: flex;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+  text-align: center;
 }
 
-.schedule .schedule-actions .btn {
+.schedule-actions .btn {
   padding: 14px 28px;
   border-radius: 12px;
   font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.3s ease;
 }
 
-.schedule .schedule-actions .btn i {
-  font-size: 16px;
-}
+.schedule-actions .btn i { font-size: 16px; }
 
-.schedule .schedule-actions .btn.btn-primary {
+.btn-primary {
   background: var(--accent-color);
-  color: var(--contrast-color);
   border: 1px solid var(--accent-color);
+  color: var(--contrast-color);
 }
 
-.schedule .schedule-actions .btn.btn-primary:hover {
+.btn-primary:hover {
   background: color-mix(in srgb, var(--accent-color), black 10%);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
-.schedule .schedule-actions .btn.btn-outline {
+.btn-outline {
+  border: 1px solid var(--accent-color);
   background: transparent;
   color: var(--accent-color);
-  border: 1px solid var(--accent-color);
 }
 
-.schedule .schedule-actions .btn.btn-outline:hover {
+.btn-outline:hover {
   background: var(--accent-color);
   color: var(--contrast-color);
   transform: translateY(-2px);
 }
 
 @media (max-width: 576px) {
-  .schedule .schedule-actions .btn {
+  .schedule-actions .btn {
     flex: 1;
     justify-content: center;
   }
