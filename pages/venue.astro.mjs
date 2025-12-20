@@ -1,0 +1,40 @@
+import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../chunks/vendor_CMbuzoBP.mjs';
+import 'html-escaper';
+import { $ as $$Layout } from '../chunks/Layout_zCynberh.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$Venue = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="main"> <!-- Page Title --> <div class="page-title"> <div class="heading"> <div class="container"> <div class="row d-flex justify-content-center text-center"> <div class="col-lg-8"> <h1 class="heading-title">Venue</h1> <p class="mb-0">
+The Space Impact Forum takes place in Leicester, UK — home to the National Space Centre, leading academic research, and one of the UK’s most dynamic innovation communities.  
+            Our 2025 venue brings together cutting-edge facilities, excellent transport links, and flexible spaces designed for collaboration and high-impact events.
+</p> </div> </div> </div> </div> <nav class="breadcrumbs"> <div class="container"> <ol> <li><a href="index">Home</a></li> <li class="current">Venue</li> </ol> </div> </nav> </div><!-- End Page Title --> <!-- Venue 2 Section --> <section id="venue-2" class="venue-2 section"> <div class="container" data-aos="fade-up" data-aos-delay="100"> <div class="row gy-5"> <!-- Venue Info --> <div class="col-lg-6"> <div class="venue-card" data-aos="fade-right" data-aos-delay="100"> <div class="venue-image"> <img src="assets/img/events/venue-2.webp" alt="Leicester Venue" class="img-fluid"> <div class="venue-badge"> <i class="bi bi-calendar-event"></i>
+March 15–17, 2025
+</div> </div> <div class="venue-content"> <h3>Venue TBC</h3> <div class="venue-address"> <i class="bi bi-geo-alt"></i> <span>Leicester, United Kingdom</span> </div> <p class="venue-description">
+Located in the heart of the city, our Leicester venue provides modern, adaptable spaces designed for conferences, workshops, and collaborative programmes.  
+              Its proximity to leading space-sector institutions — including the National Space Centre and Space Park Leicester — makes it an ideal home for the Space Impact Forum.
+</p> <div class="venue-features"> <div class="feature-item"> <i class="bi bi-people"></i> <span>1,000–2,500 Capacity</span> </div> <div class="feature-item"> <i class="bi bi-wifi"></i> <span>High-Speed WiFi</span> </div> <div class="feature-item"> <i class="bi bi-cup-hot"></i> <span>Catering Available</span> </div> <div class="feature-item"> <i class="bi bi-universal-access"></i> <span>Fully Accessible</span> </div> </div> </div> </div> </div> <!-- Map & Directions --> <div class="col-lg-6"> <div class="directions-section" data-aos="fade-left" data-aos-delay="200"> <div class="map-container"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77482.3870744158!2d-1.2136720127925895!3d52.63604840101941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487742ab49b76c73%3A0x9a151d2a6fb49cb8!2sLeicester!5e0!3m2!1sen!2suk!4v1764828097369!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe> </div> <div class="travel-options"> <h4>Getting There</h4> <div class="travel-item"> <div class="travel-icon"> <i class="bi bi-airplane"></i> </div> <div class="travel-info"> <h5>By Air</h5> <p>East Midlands Airport (19 miles)</p> <span class="travel-time">30–35 min drive</span> </div> </div> <div class="travel-item"> <div class="travel-icon"> <i class="bi bi-car-front"></i> </div> <div class="travel-info"> <h5>By Car</h5> <p>City centre parking and multi-storey options nearby</p> <span class="travel-time">500+ spaces</span> </div> </div> <div class="travel-item"> <div class="travel-icon"> <i class="bi bi-bus-front"></i> </div> <div class="travel-info"> <h5>Public Transport</h5> <p>Leicester Railway Station – direct links to London, Birmingham & Sheffield</p> <span class="travel-time">10–15 min walk</span> </div> </div> </div> <div class="venue-actions"> <a href="#" class="btn btn-primary"> <i class="bi bi-map"></i>
+Get Directions
+</a> <a href="#" class="btn btn-outline"> <i class="bi bi-building"></i>
+Find Hotels
+</a> </div> </div> </div> </div> <!-- Accommodation Section --> <div class="accommodation-section" data-aos="fade-up" data-aos-delay="300"> <div class="section-header"> <h4>Recommended Accommodation</h4> <p>Curated hotels within walking distance of the venue</p> </div> <div class="row gy-4"> <div class="col-lg-4 col-md-6"> <div class="hotel-card" data-aos="zoom-in" data-aos-delay="100"> <div class="hotel-rating"> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-half"></i> </div> <h5>Novotel Leicester</h5> <div class="hotel-distance"> <i class="bi bi-geo-alt"></i>
+0.4 miles away
+</div> <div class="hotel-price"> <span class="price">£120</span> <span class="period">/night</span> </div> </div> </div> <div class="col-lg-4 col-md-6"> <div class="hotel-card" data-aos="zoom-in" data-aos-delay="200"> <div class="hotel-rating"> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star"></i> </div> <h5>Hotel Brooklyn Leicester</h5> <div class="hotel-distance"> <i class="bi bi-geo-alt"></i>
+0.6 miles away
+</div> <div class="hotel-price"> <span class="price">£110</span> <span class="period">/night</span> </div> </div> </div> <div class="col-lg-4 col-md-6"> <div class="hotel-card" data-aos="zoom-in" data-aos-delay="300"> <div class="hotel-rating"> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> </div> <h5>The Belmont Hotel</h5> <div class="hotel-distance"> <i class="bi bi-geo-alt"></i>
+0.8 miles away
+</div> <div class="hotel-price"> <span class="price">£95</span> <span class="period">/night</span> </div> </div> </div> </div> </div> </div> </section><!-- /Venue 2 Section --> </main> ` })}`;
+}, "/Volumes/DevProjects/rjmlaird/Eventix/src/pages/venue.astro", void 0);
+const $$file = "/Volumes/DevProjects/rjmlaird/Eventix/src/pages/venue.astro";
+const $$url = "/venue";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Venue,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };
