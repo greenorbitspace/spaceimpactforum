@@ -175,7 +175,6 @@ export const collections = {
   sectors: defineCollection({ schema: sectorSchema }),
   "global-challenges": defineCollection({ schema: globalChallengeSchema }),
   "space-applications": defineCollection({ schema: spaceAppSchema }),
-  "service-areas": defineCollection({ schema: serviceAreaSchema }), // optional if used
   organisations: defineCollection({ schema: baseSchema }),
 };
 
