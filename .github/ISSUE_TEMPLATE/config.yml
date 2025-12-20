@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support
+    url: https://impactorbit.co#contact
+    about: If you have urgent questions, please contact support.
+
+# This controls the template chooser experience
+name: Issue Templates
+description: "Select the type of issue you want to create to help us track and resolve it efficiently."
+label: "needs-triage"
+about: "Please choose a template. Fill in as much detail as possible."
+
+# List of templates available in .github/ISSUE_TEMPLATE/
+template:
+  - bug_report.yml
+  - feature_request.yml
+  - general_inquiry.yml
