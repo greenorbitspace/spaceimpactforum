@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import About from '../components/About.astro';
+import Schedule from '../components/Schedule.jsx';
+import Speakers from '../components/Speakers.astro';
+import CTA from '../components/CTA.astro';
+import Tickets from '../components/Tickets.astro';
+---
+
+<Layout
+  title="Space Impact Forum"
+  description="Advancing Sustainability & Innovation in Space"
+>
+  <main class="main index-page">
+    <!-- Hero Section -->
+    <HeroSection />
+
+    <!-- About Section -->
+    <About />
+
+    <!-- Schedule Section -->
+    <Schedule />
+
+    <!-- Speakers Section -->
+    <Speakers />
+
+    <!-- Call to Action Section -->
+    <CTA />
+
+    <!-- Tickets Section -->
+    <Tickets />
+  </main>
+</Layout>

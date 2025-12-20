@@ -1,0 +1,71 @@
+---
+// Speakers.astro
+import speakersData from "../data/speakers.json";
+
+const { speakers } = speakersData;
+---
+
+<section id="speakers" class="speakers section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Speakers</h2>
+    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4">
+
+      {speakers.map((speaker, index) => (
+        <div
+          class="col-lg-4 col-md-6"
+          data-aos="fade-up"
+          data-aos-delay={200 + index * 50}
+          key={speaker.id}
+        >
+          <div class="speaker-card">
+            <div class="speaker-image">
+              <img
+                src={speaker.image}
+                alt={speaker.name}
+                class="img-fluid"
+                loading="lazy"
+              />
+
+              <div class="speaker-overlay">
+                <div class="social-links">
+                  {speaker.social?.linkedin && (
+                    <a href={speaker.social.linkedin} aria-label="LinkedIn">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                  )}
+                  {speaker.social?.twitter && (
+                    <a href={speaker.social.twitter} aria-label="Twitter">
+                      <i class="bi bi-twitter"></i>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div class="speaker-content">
+              <div class="speaker-badge">{speaker.badge}</div>
+              <h4>{speaker.name}</h4>
+              <p class="speaker-title">{speaker.title}</p>
+              <p class="speaker-company">{speaker.company}</p>
+              <p class="speaker-bio">{speaker.bio}</p>
+
+              {speaker.session?.topic && (
+                <div class="speaker-session">
+                  <span class="session-topic">{speaker.session.topic}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,103 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ryan Laird",
+    "alternateName": "rjmlaird",
+    "jobTitle": "Founder & Director",
+    "honorificSuffix": "CMktr",
+    "description": "Ryan Laird is the Founder and Director of Green Orbit Space, a communications and PR consultancy specialising in mission-driven storytelling and sustainable marketing for the space sector. With more than a decade of industry experience, he is a Chartered Marketer and leading advocate for sustainability and responsible communications in space.",
+    "image": "https://greenorbit.space/images/founders/ryan-laird.jpg",
+    "url": "https://greenorbit.space/about/ryan-laird",
+    "email": "mailto:ryan@greenorbit.space",
+
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "University of Leicester"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "University of the West of England (UWE Bristol)"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Loughborough College"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "International Space University"
+      }
+    ],
+
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Green Orbit Space Communications & PR",
+      "url": "https://greenorbit.space"
+    },
+
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "UKspace",
+        "url": "https://www.ukspace.org/",
+        "roleName": "Chair, Startup Working Group"
+      },
+      {
+        "@type": "Organization",
+        "name": "Chartered Institute of Marketing",
+        "url": "https://www.cim.co.uk/",
+        "roleName": "Chartered Marketer"
+      }
+    ],
+
+    "sameAs": [
+      "https://linkedin.com/in/rjmlaird",
+      "https://twitter.com/rjmlaird",
+      "https://github.com/rjmlaird",
+      "https://www.instagram.com/rjmlaird"
+    ],
+
+    "knowsAbout": [
+      "Space Communications",
+      "Public Relations",
+      "Sustainable Marketing",
+      "Brand Strategy",
+      "Stakeholder Engagement",
+      "Mission Storytelling",
+      "SEO",
+      "Content Strategy",
+      "Digital Sustainability",
+      "Technical SEO",
+      "Web Accessibility",
+      "Sustainable Development Goals"
+    ],
+
+    "affiliation": {
+      "@type": "Organization",
+      "name": "The Sustainable Space Podcast",
+      "url": "https://greenorbit.space/podcast"
+    },
+
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Communications & PR Consultant",
+      "skills": [
+        "Strategic Communications",
+        "Narrative Development",
+        "Campaign Leadership",
+        "Stakeholder Engagement",
+        "Brand Building",
+        "Thought Leadership"
+      ]
+    },
+
+    "award": [
+      "Chartered Marketer (CIM)",
+      "Speaker at the UKSEDS National Student Space Conference",
+      "Facilitator at the Sustainable Business Alliance Café"
+    ],
+
+    "knowsLanguage": ["en-GB"]
+  }
+]

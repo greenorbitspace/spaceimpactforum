@@ -1,0 +1,144 @@
+---
+import { fetchIndicoTimetable } from "@/lib/indico";
+import { normaliseAgenda } from "@/lib/normaliseAgenda";
+
+const EVENT_ID = "1234";
+
+const indicoData = await fetchIndicoTimetable(EVENT_ID);
+const sessions = normaliseAgenda(indicoData);
+
+// Group by day
+const days = Object.groupBy(sessions, s => s.day);
+
+// Helper
+const formatTime = (iso: string) =>
+  new Date(iso).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+---
+
+<section id="schedule" class="schedule section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Schedule</h2>
+    <p>Explore the full programme of keynotes, discussions, and impact-driven sessions.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <!-- Day Tabs -->
+    <div class="schedule-header">
+      <ul class="nav nav-tabs" role="tablist">
+        {Object.keys(days).map((day, index) => (
+          <li class="nav-item" role="presentation">
+            <button
+              class={`nav-link ${index === 0 ? "active" : ""}`}
+              data-bs-toggle="tab"
+              data-bs-target={`#schedule-${day}`}
+              type="button"
+              role="tab"
+            >
+              {new Date(day).toLocaleDateString(undefined, {
+                month: "short",
+                day: "numeric",
+                weekday: "long"
+              })}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+
+      {Object.entries(days).map(([day, daySessions], index) => (
+        <div
+          id={`schedule-${day}`}
+          class={`tab-pane fade ${index === 0 ? "show active" : ""}`}
+          role="tabpanel"
+        >
+          <div class="schedule-content">
+            <div class="session-timeline">
+
+              {daySessions.map(session => (
+                <div class="session-block">
+
+                  <!-- Time -->
+                  <div class="session-time">
+                    <span class="start">{formatTime(session.start)}</span>
+                    <span class="end">{formatTime(session.end)}</span>
+                  </div>
+
+                  <!-- Card -->
+                  <div class={`session-card ${session.isBreak ? "break-card" : ""}`}>
+                    <div class="session-info">
+
+                      <div class="session-meta">
+                        <span class={`track ${session.track.toLowerCase()}`}>
+                          {session.track}
+                        </span>
+                        {session.room && (
+                          <span class="room">{session.room}</span>
+                        )}
+                      </div>
+
+                      <h3 class="session-title">{session.title}</h3>
+
+                      {session.description && (
+                        <p class="session-description">
+                          {session.description}
+                        </p>
+                      )}
+
+                      {!session.isBreak && session.speakers?.length > 0 && (
+                        <div class="speaker-info">
+                          {session.speakers.map(speaker => (
+                            <div class="d-flex align-items-center gap-3">
+                              {speaker.avatar && (
+                                <img
+                                  src={speaker.avatar}
+                                  class="speaker-avatar img-fluid"
+                                  alt={speaker.name}
+                                />
+                              )}
+                              <div class="speaker-details">
+                                <h4 class="speaker-name">{speaker.name}</h4>
+                                {speaker.role && (
+                                  <span class="speaker-role">
+                                    {speaker.role}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {!session.isBreak && (
+                      <button class="add-to-schedule">
+                        <i class="bi bi-calendar-plus"></i> Add to Schedule
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Actions -->
+    <div class="schedule-actions">
+      <a href="/agenda.pdf" class="btn btn-primary">
+        <i class="bi bi-download"></i> Download Full Agenda
+      </a>
+      <a href="/agenda.ics" class="btn btn-outline">
+        <i class="bi bi-calendar-event"></i> Export to Calendar
+      </a>
+    </div>
+
+  </div>
+</section>

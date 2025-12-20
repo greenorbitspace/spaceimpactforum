@@ -1,0 +1,57 @@
+---
+import faqs from '../../data/schema/faqs.json';
+---
+<section class="faq-9 faq section" id="faq">
+  <div class="container">
+    <div class="row">
+
+      <!-- Intro column -->
+      <div class="col-lg-5" data-aos="fade-up">
+        <h2 class="faq-title">Have Questions? Explore Our Insights</h2>
+        <p class="faq-description">
+          Here are answers to some common questions about Green Orbit Space Communications & PR. If your question isn’t listed, feel free to reach out directly.
+        </p>
+      </div>
+
+      <!-- FAQ items -->
+      <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+        <div class="faq-container">
+          {faqs.length > 0
+            ? faqs.map((faq, i) => (
+                <div class={`faq-item${i === 0 ? ' faq-active' : ''}`} key={i}>
+                  <h3>{faq.question}</h3>
+                  <div class="faq-content">
+                    <p>{faq.answer}</p>
+                    {faq.links?.length > 0 && (
+                      <ul class="faq-links">
+                        {faq.links.map((link, j) => (
+                          <li key={j}>
+                            <a href={link.url}>{link.text}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+              ))
+            : <p>No FAQs available at the moment.</p>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    const toggle = item.querySelector('.faq-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => item.classList.toggle('faq-active'));
+    }
+  });
+});
+</script>

@@ -1,0 +1,178 @@
+[
+    {
+      "id": "sarah-chen",
+      "name": "Sarah Chen",
+      "badge": "Plenary 1",
+      "title": "Chief Technology Officer",
+      "company": "TechFlow Solutions",
+      "bio": "Leading digital transformation initiatives across Fortune 500 companies with over 15 years of experience in cloud architecture.",
+      "session": {
+        "topic": "Building Scalable Cloud Infrastructure"
+      },
+      "image": "/img/events/speaker-8.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "michael-rodriguez",
+      "name": "Michael Rodriguez",
+      "badge": "Keynote 1",
+      "title": "Product Strategy Director",
+      "company": "Innovation Labs",
+      "bio": "Passionate about creating user-centered products that solve real-world problems and drive business growth through data-driven insights.",
+      "session": {
+        "topic": "Product Management Best Practices"
+      },
+      "image": "/img/events/speaker-1.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "emma-thompson-climate",
+      "name": "Emma Thompson",
+      "badge": "Climate",
+      "title": "UX Design Lead",
+      "company": "Creative Studio",
+      "bio": "Specialized in creating intuitive digital experiences that bridge the gap between user needs and business objectives.",
+      "session": {
+        "topic": "Design Systems at Scale"
+      },
+      "image": "/img/events/speaker-3.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "emma-thompson-environment",
+      "name": "Emma Thompson",
+      "badge": "Environment",
+      "title": "UX Design Lead",
+      "company": "Creative Studio",
+      "bio": "Specialized in creating intuitive digital experiences that bridge the gap between user needs and business objectives.",
+      "session": {
+        "topic": "Design Systems at Scale"
+      },
+      "image": "/img/events/speaker-3.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "david-kim-economy",
+      "name": "David Kim",
+      "badge": "Economy",
+      "title": "Data Science Manager",
+      "company": "Analytics Pro",
+      "bio": "Expert in machine learning algorithms and predictive analytics, helping organizations make data-driven decisions with confidence.",
+      "session": {
+        "topic": "AI in Business Applications"
+      },
+      "image": "/img/events/speaker-7.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "david-kim-business",
+      "name": "David Kim",
+      "badge": "Business",
+      "title": "Data Science Manager",
+      "company": "Analytics Pro",
+      "bio": "Expert in machine learning algorithms and predictive analytics, helping organizations make data-driven decisions with confidence.",
+      "session": {
+        "topic": "AI in Business Applications"
+      },
+      "image": "/img/events/speaker-7.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "lisa-johnson",
+      "name": "Lisa Johnson",
+      "badge": "Plenary 2",
+      "title": "Marketing Director",
+      "company": "Growth Partners",
+      "bio": "Driving customer acquisition and retention strategies for high-growth startups through innovative marketing campaigns.",
+      "session": {
+        "topic": "Growth Hacking Strategies"
+      },
+      "image": "/img/events/speaker-10.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "james-wilson-panel-1",
+      "name": "James Wilson",
+      "badge": "Panel 1",
+      "title": "Security Engineer",
+      "company": "SecureTech",
+      "bio": "Protecting digital systems and ensuring cybersecurity best practices across enterprise environments and cloud platforms.",
+      "session": {
+        "topic": "Modern Security Frameworks"
+      },
+      "image": "/img/events/speaker-2.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "james-wilson-panel-2",
+      "name": "James Wilson",
+      "badge": "Panel 2",
+      "title": "Security Engineer",
+      "company": "SecureTech",
+      "bio": "Protecting digital systems and ensuring cybersecurity best practices across enterprise environments and cloud platforms.",
+      "session": {
+        "topic": "Modern Security Frameworks"
+      },
+      "image": "/img/events/speaker-2.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "james-wilson-panel-3",
+      "name": "James Wilson",
+      "badge": "Panel 3",
+      "title": "Security Engineer",
+      "company": "SecureTech",
+      "bio": "Protecting digital systems and ensuring cybersecurity best practices across enterprise environments and cloud platforms.",
+      "session": {
+        "topic": "Modern Security Frameworks"
+      },
+      "image": "/img/events/speaker-2.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    },
+    {
+      "id": "james-wilson-panel-4",
+      "name": "James Wilson",
+      "badge": "Panel 4",
+      "title": "Security Engineer",
+      "company": "SecureTech",
+      "bio": "Protecting digital systems and ensuring cybersecurity best practices across enterprise environments and cloud platforms.",
+      "session": {
+        "topic": "Modern Security Frameworks"
+      },
+      "image": "/img/events/speaker-2.webp",
+      "social": {
+        "linkedin": "",
+        "twitter": ""
+      }
+    }
+  ]

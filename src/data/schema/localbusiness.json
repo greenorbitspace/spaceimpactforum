@@ -1,0 +1,45 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Green Orbit Space",
+  "alternateName": "Green Orbit Space Communications and PR",
+  "image": [
+    "https://greenorbit.space/images/logo.png"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "75 Exploration Drive",
+    "addressLocality": "Leicester",
+    "addressRegion": "Leicestershire",
+    "postalCode": "LE4 5NU",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.6369,
+    "longitude": -1.1398
+  },
+  "url": "https://greenorbit.space",
+  "telephone": "+44-116-1234567",
+  "email": "hello@greenorbit.space",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:30"
+    }
+  ],
+  "priceRange": "££",
+  "sameAs": [
+    "https://www.linkedin.com/company/greenorbitspace",
+    "https://twitter.com/greenorbitspace"
+  ],
+  "description": "Green Orbit Space Communications and PR is a Leicester-based strategic communications and sustainable marketing consultancy for the space sector. We help space organisations, startups, and mission-driven teams communicate clearly, build credibility, and accelerate growth through brand strategy, PR, content development, digital marketing, and stakeholder engagement."
+}

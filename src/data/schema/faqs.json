@@ -1,0 +1,113 @@
+[
+  {
+    "question": "What does Green Orbit Space Communications & PR do?",
+    "answer": "We help space organisations communicate complex missions with clarity, purpose, and impact. Our work includes strategic communications, narrative development, PR and media campaigns, stakeholder engagement, capacity-building workshops, and mission-aligned storytelling that strengthens visibility, credibility, and trust across the global space ecosystem.",
+    "category": "company",
+    "links": [
+      { "text": "About Us", "url": "/about" },
+      { "text": "Services", "url": "/services" }
+    ]
+  },
+  {
+    "question": "Who do you work with?",
+    "answer": "We collaborate with satellite operators, mission developers, technology innovators, national and regional space programmes, startups, universities, research institutions, and organisations advancing sustainable space activity. We also support forums, labs, and multi-stakeholder initiatives focused on collaboration and sector development.",
+    "category": "company",
+    "links": []
+  },
+  {
+    "question": "Do you work internationally?",
+    "answer": "Yes. Based in the UK, we partner with organisations across Europe, North America, Asia, Africa, and emerging space nations. Our work supports global missions, multi-country programmes, international forums, and cross-border collaborations.",
+    "category": "company",
+    "links": []
+  },
+  {
+    "question": "What makes Green Orbit Space different?",
+    "answer": "We combine space-sector expertise, strategic communications capability, and sustainability insight to deliver narratives that are technically accurate, globally resonant, and mission-aligned. Our focus on responsible storytelling, long-term trust, and clarity that cuts through complexity sets us apart.",
+    "category": "company",
+    "links": []
+  },
+  {
+    "question": "How do you translate complex space missions into clear narratives?",
+    "answer": "We combine deep sector expertise, audience insight, and strategic storytelling to distil technical missions into accessible and meaningful narratives. This enables policymakers, investors, partners, and the public to understand the mission’s scientific value, societal benefit, and contribution to a sustainable space future.",
+    "category": "communications",
+    "links": []
+  },
+  {
+    "question": "How do you align communications with space sustainability goals?",
+    "answer": "We integrate sustainability into messaging from the outset by highlighting responsible operations, environmental impact, innovation pathways, and alignment with global sustainability and policy frameworks. Our approach focuses on evidence-based communication that avoids greenwashing and supports credible, mission-led storytelling.",
+    "category": "sustainability",
+    "links": [
+      { "text": "Insights", "url": "/insights" }
+    ]
+  },
+  {
+    "question": "Can you help with narrative development for sustainability or impact initiatives?",
+    "answer": "Absolutely. We craft narratives that articulate environmental contribution, societal value, innovation pathways, and alignment with policy and sector goals. These narratives support strategic positioning, partnership development, funding applications, and external communications.",
+    "category": "sustainability",
+    "links": []
+  },
+  {
+    "question": "Can you support campaigns, events, and public engagement?",
+    "answer": "Yes. We design and deliver PR campaigns, media outreach, event messaging, and engagement programmes tailored to scientific, governmental, commercial, and public audiences. This includes communications for conferences, launch events, funding calls, outreach campaigns, and multi-stakeholder initiatives.",
+    "category": "services",
+    "links": [
+      { "text": "Media & PR Campaigns", "url": "/services" }
+    ]
+  },
+  {
+    "question": "What types of communications strategies do you provide?",
+    "answer": "We deliver mission-led communication strategies, narrative frameworks, PR and media strategies, stakeholder engagement plans, campaign design, workshop programmes, and communications support for forums, labs, and collaborative platforms across the global space ecosystem.",
+    "category": "services",
+    "links": []
+  },
+  {
+    "question": "How do you support stakeholder engagement?",
+    "answer": "We develop engagement frameworks tailored to governments, industry, academia, investors, and civil society. These frameworks support collaboration, strengthen trust, and help organisations communicate mission value—particularly for initiatives requiring broad, multi-stakeholder participation.",
+    "category": "services",
+    "links": [
+      { "text": "Stakeholder Engagement", "url": "/services" }
+    ]
+  },
+  {
+    "question": "Do you support thought leadership and media visibility?",
+    "answer": "Yes. We create thought leadership content, opinion pieces, press releases, media kits, and strategic messaging that elevate your organisation's voice. We also coordinate outreach to journalists, media outlets, and sector-specific publications to enhance visibility and influence.",
+    "category": "services",
+    "links": []
+  },
+  {
+    "question": "Do you offer workshops and capacity-building?",
+    "answer": "We run tailored workshops on mission storytelling, strategic communication, sustainability messaging, public engagement, and communication skills for technical or leadership teams. These programmes help organisations strengthen internal capability and scale communications effectively.",
+    "category": "services",
+    "links": [
+      { "text": "Workshops & Capacity Building", "url": "/services" }
+    ]
+  },
+  {
+    "question": "How do you measure communications impact?",
+    "answer": "We use a mix of qualitative and quantitative indicators including reach, engagement, message resonance, stakeholder feedback, media visibility, and alignment with organisational and mission objectives. This ensures communications outcomes are measurable, adaptive, and continuously improving.",
+    "category": "process",
+    "links": []
+  },
+  {
+    "question": "What is your process for developing communication strategies?",
+    "answer": "Our four-step approach includes: Discovery & Listening, Strategy & Storytelling, Implementation & Engagement, and Review, Learn & Amplify. This structured process ensures communications remain credible, aligned, and responsive to mission needs and stakeholder expectations.",
+    "category": "process",
+    "links": [
+      { "text": "Our Approach", "url": "/about#approach" }
+    ]
+  },
+  {
+    "question": "How do I engage Green Orbit Space for my mission or initiative?",
+    "answer": "You can reach out through our website or by emailing hello@greenorbit.space. We begin with an initial consultation to understand your mission, audiences, challenges, and communications goals before shaping a tailored support pathway.",
+    "category": "process",
+    "links": [
+      { "text": "Contact", "url": "/contact" }
+    ]
+  },
+  {
+    "question": "What happens during the initial consultation?",
+    "answer": "We discuss your mission objectives, target audiences, communication challenges, sustainability priorities, and existing practices. This enables us to design a clear strategy or engagement plan that supports your goals and delivers meaningful impact.",
+    "category": "process",
+    "links": []
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "event": {
+    "id": "space-impact-forum-2025",
+    "name": "Space Impact Forum",
+    "startDate": "2025-10-15",
+    "endDate": "2025-10-17"
+  },
+  "days": [
+    {
+      "id": "day-1",
+      "label": "Monday",
+      "date": "2025-10-15",
+      "sessions": [
+        {
+          "id": "registration",
+          "type": "break",
+          "title": "Arrival & Registration",
+          "start": "08:30",
+          "end": "09:00",
+          "room": "Main Stage",
+          "track": "networking"
+        },
+        {
+          "id": "opening-plenary",
+          "type": "plenary",
+          "title": "Opening Plenary",
+          "start": "09:00",
+          "end": "09:30",
+          "room": "Room A",
+          "track": "plenary"
+        },
+        {
+          "id": "keynote-global-impact",
+          "type": "keynote",
+          "title": "Global Impact Keynote",
+          "start": "09:30",
+          "end": "10:15",
+          "room": "Room B",
+          "track": "keynote"
+        }
+      ]
+    },
+    {
+      "id": "day-2",
+      "label": "Tuesday",
+      "date": "2025-10-16",
+      "sessions": [
+        {
+          "id": "day-2-kickoff",
+          "type": "plenary",
+          "title": "Morning Kickoff",
+          "start": "09:00",
+          "end": "09:15",
+          "room": "Main Stage",
+          "track": "plenary"
+        }
+      ]
+    }
+  ]
+}
