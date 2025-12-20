@@ -16,129 +16,921 @@ const formatTime = (iso: string) =>
 ---
 
 <section id="schedule" class="schedule section">
+</main>
+</body>
 
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Schedule</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+<!-- Schedule Section -->
+<section id="schedule" class="schedule section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>Schedule</h2>
     <p>Explore the full programme of keynotes, discussions, and impact-driven sessions.</p>
   </div>
+  <!-- End Section Title -->
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
 
     <!-- Day Tabs -->
     <div class="schedule-header">
-      <ul class="nav nav-tabs" role="tablist">
-        {Object.keys(days).map((day, index) => (
-          <li class="nav-item" role="presentation">
-            <button
-              class={`nav-link ${index === 0 ? "active" : ""}`}
-              data-bs-toggle="tab"
-              data-bs-target={`#schedule-${day}`}
-              type="button"
-              role="tab"
-            >
-              {new Date(day).toLocaleDateString(undefined, {
-                month: "short",
-                day: "numeric",
-                weekday: "long"
-              })}
-            </button>
-          </li>
-        ))}
+      <ul class="nav nav-tabs" id="schedule-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="schedule-tab-1" data-bs-toggle="tab" data-bs-target="#schedule-day-1" type="button" role="tab" aria-controls="schedule-day-1" aria-selected="true">
+            Oct 15<br>Monday
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="schedule-tab-2" data-bs-toggle="tab" data-bs-target="#schedule-day-2" type="button" role="tab" aria-controls="schedule-day-2" aria-selected="false">
+            Oct 16<br>Tuesday
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="schedule-tab-3" data-bs-toggle="tab" data-bs-target="#schedule-day-3" type="button" role="tab" aria-controls="schedule-day-3" aria-selected="false">
+            Oct 17<br>Wednesday
+          </button>
+        </li>
       </ul>
     </div>
+    <!-- End Tabs -->
 
+        <div class="schedule-header">
+          <ul class="nav nav-tabs" id="schedule-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="schedule-tab-1" data-bs-toggle="tab" data-bs-target="#schedule-tab-pane-1" type="button" role="tab" aria-controls="schedule-tab-pane-1" aria-selected="true">Oct 15<br>Monday</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="schedule-tab-2" data-bs-toggle="tab" data-bs-target="#schedule-tab-pane-2" type="button" role="tab" aria-controls="schedule-tab-pane-2" aria-selected="false">Oct 16<br>Tuesday</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="schedule-tab-3" data-bs-toggle="tab" data-bs-target="#schedule-tab-pane-3" type="button" role="tab" aria-controls="schedule-tab-pane-3" aria-selected="false">Oct 17<br>Wednesday</button>
+            </li>
+          </ul>
+        </div>
     <!-- Tab Content -->
-    <div class="tab-content">
+    <div class="tab-content" id="schedule-tabContent">
 
-      {Object.entries(days).map(([day, daySessions], index) => (
-        <div
-          id={`schedule-${day}`}
-          class={`tab-pane fade ${index === 0 ? "show active" : ""}`}
-          role="tabpanel"
-        >
-          <div class="schedule-content">
-            <div class="session-timeline">
+      <!-- Day 1 -->
+      <div class="tab-pane fade show active" id="schedule-day-1" role="tabpanel" aria-labelledby="schedule-tab-1">
+        <div class="schedule-content">
 
-              {daySessions.map(session => (
-                <div class="session-block">
+          <div class="session-timeline">
 
-                  <!-- Time -->
-                  <div class="session-time">
-                    <span class="start">{formatTime(session.start)}</span>
-                    <span class="end">{formatTime(session.end)}</span>
+            <!-- Arrival & Registration -->
+            <div class="session-block">
+              <div class="session-time">
+                <span class="start">08:30</span>
+                <span class="end">09:00</span>
+              </div>
+              <div class="session-card">
+                <div class="session-info">
+                  <div class="session-meta">
+                    <span class="track break">Networking</span>
+                    <span class="room">Main Stage</span>
                   </div>
+                  <h3 class="session-title">Arrival & Registration</h3>
+                  <p class="session-description">Welcome refreshments and networking as participants arrive and collect badges.</p>
 
-                  <!-- Card -->
-                  <div class={`session-card ${session.isBreak ? "break-card" : ""}`}>
-                    <div class="session-info">
-
-                      <div class="session-meta">
-                        <span class={`track ${session.track.toLowerCase()}`}>
-                          {session.track}
-                        </span>
-                        {session.room && (
-                          <span class="room">{session.room}</span>
-                        )}
-                      </div>
-
-                      <h3 class="session-title">{session.title}</h3>
-
-                      {session.description && (
-                        <p class="session-description">
-                          {session.description}
-                        </p>
-                      )}
-
-                      {!session.isBreak && session.speakers?.length > 0 && (
-                        <div class="speaker-info">
-                          {session.speakers.map(speaker => (
-                            <div class="d-flex align-items-center gap-3">
-                              {speaker.avatar && (
-                                <img
-                                  src={speaker.avatar}
-                                  class="speaker-avatar img-fluid"
-                                  alt={speaker.name}
-                                />
-                              )}
-                              <div class="speaker-details">
-                                <h4 class="speaker-name">{speaker.name}</h4>
-                                {speaker.role && (
-                                  <span class="speaker-role">
-                                    {speaker.role}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                  <div class="speaker-info">
+                    <img src="assets/img/person/person-f-4.webp" class="speaker-avatar img-fluid" alt="">
+                    <div class="speaker-details">
+                      <h4 class="speaker-name">Event Host Team</h4>
+                      <span class="speaker-role">Welcome & Orientation</span>
                     </div>
-
-                    {!session.isBreak && (
-                      <button class="add-to-schedule">
-                        <i class="bi bi-calendar-plus"></i> Add to Schedule
-                      </button>
-                    )}
                   </div>
                 </div>
-              ))}
+                <button class="add-to-schedule">
+                  <i class="bi bi-calendar-plus"></i> Add to Schedule
+                </button>
+              </div>
+            </div>
+            <!-- End Block -->
+
+        <div class="tab-content" id="schedule-tabContent">
+            <!-- Opening Plenary -->
+            <div class="session-block">
+              <div class="session-time">
+                <span class="start">09:00</span>
+                <span class="end">09:30</span>
+              </div>
+              <div class="session-card">
+                <div class="session-info">
+                  <div class="session-meta">
+                    <span class="track plenary">PLENARY</span>
+                    <span class="room">Room A</span>
+                  </div>
+                  <h3 class="session-title">Opening Plenary – Welcome Remarks</h3>
+                  <p class="session-description">An introduction to the forum’s themes, guiding questions, and outcomes for the day.</p>
+
+                  <div class="speaker-info">
+                    <img src="assets/img/person/person-m-6.webp" class="speaker-avatar img-fluid" alt="">
+                    <div class="speaker-details">
+                      <h4 class="speaker-name">Key Forum Chair</h4>
+                      <span class="speaker-role">Event Opening</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="add-to-schedule">
+                  <i class="bi bi-calendar-plus"></i> Add to Schedule
+                </button>
+              </div>
+            </div>
+            <!-- End Block -->
+
+            <!-- Keynote -->
+            <div class="session-block">
+              <div class="session-time">
+                <span class="start">09:30</span>
+                <span class="end">10:15</span>
+              </div>
+              <div class="session-card">
+                <div class="session-info">
+                  <div class="session-meta">
+                    <span class="track keynote">KEYNOTE</span>
+                    <span class="room">Room B</span>
+                  </div>
+                  <h3 class="session-title">Keynote – Global Impact</h3>
+                  <p class="session-description">A deep dive into the evolving global landscape and how transformative impact can be scaled.</p>
+
+                  <div class="speaker-info">
+                    <img src="assets/img/person/person-f-5.webp" class="speaker-avatar img-fluid" alt="">
+                    <div class="speaker-details">
+                      <h4 class="speaker-name">Keynote Speaker</h4>
+                      <span class="speaker-role">Global Impact Leader</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="add-to-schedule">
+                  <i class="bi bi-calendar-plus"></i> Add to Schedule
+                </button>
+              </div>
+            </div>
+            <!-- End Block -->
+
+            <!-- Coffee Break -->
+            <div class="session-block">
+              <div class="session-time">
+                <span class="start">10:15</span>
+                <span class="end">10:45</span>
+              </div>
+              <div class="session-card break-card">
+                <div class="session-info">
+                  <div class="session-meta">
+                    <span class="track break">Break</span>
+                    <span class="room">Lobby</span>
+                  </div>
+                  <h3 class="session-title">Networking Coffee Break</h3>
+                  <p class="session-description">Connect with fellow delegates and explore partner exhibits.</p>
+                </div>
+              </div>
+            </div>
+            <!-- End Break -->
+
+            <!-- Parallel Sessions Block (example repeated structure; all preserved) -->
+            <div class="session-block">
+              <div class="session-time">
+                <span class="start">10:45</span>
+                <span class="end">12:45</span>
+              </div>
+
+              <!-- Session A -->
+              <div class="session-card">
+                <div class="session-info">
+                  <div class="session-meta">
+                    <span class="track climate">CLIMATE & ENVIRONMENT</span>
+                    <span class="room">Main Stage</span>
+                  </div>
+                  <h3 class="session-title">Impact Track Sessions – Round 1</h3>
+                  <p class="session-description">Presentations and discussions on environmental sustainability challenges.</p>
+
+                  <div class="speaker-info">
+                    <img src="assets/img/person/person-m-7.webp" class="speaker-avatar img-fluid" alt="">
+                    <div class="speaker-details">
+                      <h4 class="speaker-name">Lead Facilitator</h4>
+                      <span class="speaker-role">Track Chair</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="add-to-schedule">
+                  <i class="bi bi-calendar-plus"></i> Add to Schedule
+                </button>
+              </div>
+
+          <div class="tab-pane fade show active" id="schedule-tab-pane-1" role="tabpanel" aria-labelledby="schedule-tab-1" tabindex="0">
+            <div class="schedule-content">
+              <div class="session-timeline">
+              <!-- Session B -->
+              <div class="session-card">
+                <div class="session-info">
+                  <div class="session-meta">
+                    <span class="track economic">ECONOMY & BUSINESS</span>
+                    <span class="room">Main Stage</span>
+                  </div>
+                  <h3 class="session-title">Impact Track Sessions – Round 1</h3>
+                  <p class="session-description">Insights into sustainable economic growth and innovation pathways.</p>
+
+                  <div class="speaker-info">
+                    <img src="assets/img/person/person-m-7.webp" class="speaker-avatar img-fluid" alt="">
+                    <div class="speaker-details">
+                      <h4 class="speaker-name">Lead Facilitator</h4>
+                      <span class="speaker-role">Track Chair</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="add-to-schedule">
+                  <i class="bi bi-calendar-plus"></i> Add to Schedule
+                </button>
+              </div>
 
             </div>
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">9:00</span>
+                    <span class="end">10:00</span>
+                    <span class="start">12:15</span>
+                    <span class="end">13:15</span>
+</div>
+                  <div class="session-card">
+                  <div class="session-card break-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track keynote">Keynote</span>
+                        <span class="room">Main Stage</span>
+                      </div>
+                      <h3 class="session-title">Sed ut perspiciatis unde omnis iste natus error</h3>
+                      <p class="session-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                      <div class="speaker-info">
+                        <img src="assets/img/person/person-f-4.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <div class="speaker-details">
+                          <h4 class="speaker-name">Tempor incididunt ut labore et dolore</h4>
+                          <span class="speaker-role">Consectetur adipiscing elit</span>
+                        </div>
+                        <span class="track break">Break</span>
+                        <span class="room">Lobby</span>
+</div>
+                      <h3 class="session-title">Lunch & Networking + Poster Walk</h3>
+                      <p class="session-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+</div>
+                    <button class="add-to-schedule">
+                      <i class="bi bi-calendar-plus"></i>
+                      Add to Schedule
+                    </button>
+</div>
+</div><!-- End Session Block -->
+
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">10:30</span>
+                    <span class="end">11:15</span>
+                    <span class="start">13:15</span>
+                    <span class="end">14:45</span>
+</div>
+<div class="session-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track development">Development</span>
+                        <span class="room">Room A</span>
+                        <span class="track societal">SOCIETY AND COMMUNITY</span>
+                        <span class="room">Main Stage</span>
+</div>
+                      <h3 class="session-title">Nemo enim ipsam voluptatem quia voluptas sit</h3>
+                      <p class="session-description">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <p>
+                      </p>
+                      <h3 class="session-title">Impact Track Sessions – Round 1 (Parallel Sessions)</h3>
+                      <p class="session-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+<div class="speaker-info">
+                        <img src="assets/img/person/person-m-6.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <img src="assets/img/person/person-m-7.webp" alt="Speaker" class="speaker-avatar img-fluid">
+<div class="speaker-details">
+                          <h4 class="speaker-name">Excepteur sint occaecat cupidatat</h4>
+                          <span class="speaker-role">Non proident sunt in culpa</span>
+                          <h4 class="speaker-name">Explicabo nemo enim</h4>
+                          <span class="speaker-role">Voluptatem quia voluptas sit</span>
+</div>
+</div>
+</div>
+@@ -373,26 +536,19 @@ <h4 class="speaker-name">Excepteur sint occaecat cupidatat</h4>
+Add to Schedule
+</button>
+</div>
+                </div><!-- End Session Block -->
+
+                <div class="session-block">
+                  <div class="session-time">
+                    <span class="start">10:30</span>
+                    <span class="end">11:15</span>
+                  </div>
+<div class="session-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track design">Design</span>
+                        <span class="room">Room B</span>
+                        <span class="track policy">POLICY AND GOVERNANCE</span>
+                        <span class="room">Main Stage</span>
+</div>
+                      <h3 class="session-title">Sunt in culpa qui officia deserunt mollit</h3>
+                      <p class="session-description">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      <h3 class="session-title">Impact Track Sessions – Round 1 (Parallel Sessions)</h3>
+                      <p class="session-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+<div class="speaker-info">
+                        <img src="assets/img/person/person-f-5.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <img src="assets/img/person/person-m-7.webp" alt="Speaker" class="speaker-avatar img-fluid">
+<div class="speaker-details">
+                          <h4 class="speaker-name">Duis aute irure dolor</h4>
+                          <span class="speaker-role">In reprehenderit in voluptate</span>
+                          <h4 class="speaker-name">Explicabo nemo enim</h4>
+                          <span class="speaker-role">Voluptatem quia voluptas sit</span>
+</div>
+</div>
+</div>
+@@ -405,39 +561,41 @@ <h4 class="speaker-name">Duis aute irure dolor</h4>
+
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">11:15</span>
+                    <span class="end">11:45</span>
+                    <span class="start">14:45</span>
+                    <span class="end">15:15</span>
+</div>
+<div class="session-card break-card">
+<div class="session-info">
+<div class="session-meta">
+<span class="track break">Break</span>
+<span class="room">Lobby</span>
+</div>
+                      <h3 class="session-title">Velit esse cillum dolore</h3>
+                      <h3 class="session-title">Networking Coffee Break</h3>
+<p class="session-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+</div>
+</div>
+</div><!-- End Session Block -->
+
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">12:00</span>
+                    <span class="end">12:45</span>
+                    <span class="start">15:15</span>
+                    <span class="end">16:15</span>
+</div>
+<div class="session-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track business">Business</span>
+                        <span class="room">Main Stage</span>
+                        <span class="track plenary">PLENARY</span>
+                        <span class="room">Room A</span>
+</div>
+                      <h3 class="session-title">Eu fugiat nulla pariatur</h3>
+                      <p class="session-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                      <h3 class="session-title">Innovation & Future Impact Plenary</h3>
+                      <p class="session-description">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <p>
+                      </p>
+<div class="speaker-info">
+                        <img src="assets/img/person/person-m-7.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <img src="assets/img/person/person-m-6.webp" alt="Speaker" class="speaker-avatar img-fluid">
+<div class="speaker-details">
+                          <h4 class="speaker-name">Explicabo nemo enim</h4>
+                          <span class="speaker-role">Voluptatem quia voluptas sit</span>
+                          <h4 class="speaker-name">Excepteur sint occaecat cupidatat</h4>
+                          <span class="speaker-role">Non proident sunt in culpa</span>
+</div>
+</div>
+</div>
+@@ -447,33 +605,26 @@ <h4 class="speaker-name">Explicabo nemo enim</h4>
+</button>
+</div>
+</div><!-- End Session Block -->
+
+              </div><!-- End Session Timeline -->
+            </div><!-- End Schedule Content -->
           </div>
+
+          <div class="tab-pane fade" id="schedule-tab-pane-2" role="tabpanel" aria-labelledby="schedule-tab-2" tabindex="0">
+            <div class="schedule-content">
+              <div class="session-timeline">
+
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">9:30</span>
+                    <span class="end">10:15</span>
+                    <span class="start">16:15</span>
+                    <span class="end">17:15</span>
+</div>
+<div class="session-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track development">Development</span>
+                        <span class="track panel">PANEL</span>
+<span class="room">Room A</span>
+</div>
+                      <h3 class="session-title">Aperiam eaque ipsa quae</h3>
+                      <p class="session-description">Illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                      <h3 class="session-title">Fireside Chat / Industry Leaders Panel</h3>
+                      <p class="session-description">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <p>
+                      </p>
+<div class="speaker-info">
+                        <img src="assets/img/person/person-m-8.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <img src="assets/img/person/person-m-6.webp" alt="Speaker" class="speaker-avatar img-fluid">
+<div class="speaker-details">
+                          <h4 class="speaker-name">Modi tempora incidunt</h4>
+                          <span class="speaker-role">Magnam aliquam quaerat</span>
+                          <h4 class="speaker-name">Excepteur sint occaecat cupidatat</h4>
+                          <span class="speaker-role">Non proident sunt in culpa</span>
+</div>
+</div>
+</div>
+@@ -483,25 +634,26 @@ <h4 class="speaker-name">Modi tempora incidunt</h4>
+</button>
+</div>
+</div><!-- End Session Block -->
+
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">10:45</span>
+                    <span class="end">11:30</span>
+                    <span class="start">17:15</span>
+                    <span class="end">17:45</span>
+</div>
+<div class="session-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track design">Design</span>
+                        <span class="room">Room B</span>
+                        <span class="track panel">PANEL</span>
+                        <span class="room">Room A</span>
+</div>
+                      <h3 class="session-title">Tempora incidunt ut labore</h3>
+                      <p class="session-description">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt. Excepteur sint occaecat cupidatat non proident.</p>
+                      <h3 class="session-title">Day 1 - Wrap Up</h3>
+                      <p class="session-description">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <p>
+                      </p>
+<div class="speaker-info">
+                        <img src="assets/img/person/person-f-6.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <img src="assets/img/person/person-m-6.webp" alt="Speaker" class="speaker-avatar img-fluid">
+<div class="speaker-details">
+                          <h4 class="speaker-name">Corporis suscipit laboriosam</h4>
+                          <span class="speaker-role">Nisi ut aliquid ex ea commodi</span>
+                          <h4 class="speaker-name">Excepteur sint occaecat cupidatat</h4>
+                          <span class="speaker-role">Non proident sunt in culpa</span>
+</div>
+</div>
+</div>
+@@ -511,33 +663,26 @@ <h4 class="speaker-name">Corporis suscipit laboriosam</h4>
+</button>
+</div>
+</div><!-- End Session Block -->
+
+              </div><!-- End Session Timeline -->
+            </div><!-- End Schedule Content -->
+          </div>
+
+          <div class="tab-pane fade" id="schedule-tab-pane-3" role="tabpanel" aria-labelledby="schedule-tab-3" tabindex="0">
+            <div class="schedule-content">
+              <div class="session-timeline">
+
+<div class="session-block">
+<div class="session-time">
+                    <span class="start">10:00</span>
+                    <span class="end">10:45</span>
+                    <span class="start">17:45</span>
+                    <span class="end">20:00</span>
+</div>
+<div class="session-card">
+<div class="session-info">
+<div class="session-meta">
+                        <span class="track business">Business</span>
+                        <span class="room">Main Stage</span>
+                        <span class="track networking">NETWORKING</span>
+                        <span class="room">Room A</span>
+</div>
+                      <h3 class="session-title">Consequatur aut perferendis</h3>
+                      <p class="session-description">Dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet. Ut enim ad minima veniam.</p>
+                      <h3 class="session-title">Evening Reception</h3>
+                      <p class="session-description">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <p>
+                      </p>
+<div class="speaker-info">
+                        <img src="assets/img/person/person-m-9.webp" alt="Speaker" class="speaker-avatar img-fluid">
+                        <img src="assets/img/person/person-m-6.webp" alt="Speaker" class="speaker-avatar img-fluid">
+<div class="speaker-details">
+                          <h4 class="speaker-name">Accusantium doloremque</h4>
+                          <span class="speaker-role">Quia dolor sit amet</span>
+                          <h4 class="speaker-name">Excepteur sint occaecat cupidatat</h4>
+                          <span class="speaker-role">Non proident sunt in culpa</span>
+</div>
+</div>
+</div>
+@@ -547,15 +692,397 @@ <h4 class="speaker-name">Accusantium doloremque</h4>
+</button>
+</div>
+</div><!-- End Session Block -->
+
+</div><!-- End Session Timeline -->
+            </div><!-- End Schedule Content -->
+      <!-- End Day 1 -->
+    </div>
+  </div>
+      <!-- Day 2 + Day 3 placeholders -->
+<div class="tab-pane fade show active" id="schedule-day-2" role="tabpanel" aria-labelledby="schedule-tab-2">
+  <div class="schedule-content">
+    <div class="session-timeline">
+
+      <!-- Morning Kickoff -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">09:00</span>
+          <span class="end">09:15</span>
         </div>
-      ))}
+        <div class="session-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track plenary">PLENARY</span>
+              <span class="room">Main Stage</span>
+            </div>
+            <h3 class="session-title">Morning Kickoff</h3>
+            <p class="session-description">
+              A brief welcome to set the tone for Day 2, outlining the key themes and collaboration opportunities ahead.
+            </p>
+</div>
+          <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+        </div>
+      </div>
+      <!-- End Morning Kickoff -->
+
+        </div><!-- End Tab Content -->
+      <!-- Keynote 2 -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">09:15</span>
+          <span class="end">10:00</span>
+        </div>
+        <div class="session-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track keynote">KEYNOTE</span>
+              <span class="room">Main Stage</span>
+            </div>
+            <h3 class="session-title">Keynote 2 – Partnerships for Impact</h3>
+            <p class="session-description">
+              Exploring how cross-sector collaboration accelerates meaningful impact, from research alliances to industry–community partnerships.
+            </p>
+          </div>
+          <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+        </div>
+      </div>
+      <!-- End Keynote 2 -->
+
+<!-- Parallel Labs (Round 1) -->
+<div class="session-block">
+
+  <!-- Time -->
+  <div class="session-time mb-4">
+    <span class="start">10:00</span>
+    <span class="end">11:30</span>
+  </div>
+
+  <div class="row gy-4">
+
+    <!-- Climate Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track environment">ENVIRONMENT</span>
+            <span class="room">Lab 1</span>
+          </div>
+          <h3 class="session-title">Environment Lab</h3>
+          <p class="session-description">
+            A hands-on workshop examining climate resilience strategies, emissions reduction pathways, and tools for adaptation at scale.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
     </div>
 
-    <!-- Actions -->
-    <div class="schedule-actions">
-      <a href="/agenda.pdf" class="btn btn-primary">
-        <i class="bi bi-download"></i> Download Full Agenda
-      </a>
-      <a href="/agenda.ics" class="btn btn-outline">
-        <i class="bi bi-calendar-event"></i> Export to Calendar
-      </a>
+    <!-- Food Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track food">FOOD</span>
+            <span class="room">Lab 2</span>
+          </div>
+          <h3 class="session-title">Food Lab</h3>
+          <p class="session-description">
+            Exploring sustainable food systems, supply chain innovation, regenerative agriculture, and circular approaches to nutrition.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
+    </div>
+
+    <!-- Energy Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track energy">ENERGY</span>
+            <span class="room">Lab 3</span>
+          </div>
+          <h3 class="session-title">Energy Lab</h3>
+          <p class="session-description">
+            A collaborative session on renewable energy transitions, smart grids, and the technologies powering a net-zero future.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
+    </div>
+
+    <!-- Urban Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track urban">URBAN</span>
+            <span class="room">Lab 4</span>
+          </div>
+          <h3 class="session-title">Urban Lab</h3>
+          <p class="session-description">
+            Investigating sustainable city planning, mobility solutions, green infrastructure, and resilience design.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+</div>
     </div>
 
   </div>
+</div>
+
+      <!-- Coffee Break -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">11:30</span>
+          <span class="end">12:00</span>
+        </div>
+        <div class="session-card break-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track break">Break</span>
+              <span class="room">Lobby</span>
+            </div>
+            <h3 class="session-title">Coffee Break</h3>
+            <p class="session-description">Refreshments and networking before the next round of workshops.</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Break -->
+
+<!-- Parallel Labs (Round 2) -->
+<div class="session-block">
+
+  <!-- Time -->
+  <div class="session-time mb-4">
+    <span class="start">12:00</span>
+    <span class="end">13:00</span>
+  </div>
+
+  <div class="row gy-4">
+
+    <!-- Climate Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track environment">ENVIRONMENT</span>
+            <span class="room">Lab 1</span>
+          </div>
+          <h3 class="session-title">Environment Lab</h3>
+          <p class="session-description">
+            A hands-on workshop examining climate resilience strategies, emissions reduction pathways, and tools for adaptation at scale.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
+    </div>
+
+    <!-- Food Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track food">FOOD</span>
+            <span class="room">Lab 2</span>
+          </div>
+          <h3 class="session-title">Food Lab</h3>
+          <p class="session-description">
+            Exploring sustainable food systems, supply chain innovation, regenerative agriculture, and circular approaches to nutrition.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
+    </div>
+
+    <!-- Energy Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track energy">ENERGY</span>
+            <span class="room">Lab 3</span>
+          </div>
+          <h3 class="session-title">Energy Lab</h3>
+          <p class="session-description">
+            A collaborative session on renewable energy transitions, smart grids, and the technologies powering a net-zero future.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
+    </div>
+
+    <!-- Urban Lab -->
+    <div class="col-lg-3 col-md-6">
+      <div class="session-card enhanced">
+        <div class="session-info">
+          <div class="session-meta">
+            <span class="track urban">URBAN</span>
+            <span class="room">Lab 4</span>
+          </div>
+          <h3 class="session-title">Urban Lab</h3>
+          <p class="session-description">
+            Investigating sustainable city planning, mobility solutions, green infrastructure, and resilience design.
+          </p>
+        </div>
+        <button class="add-to-schedule">
+          <i class="bi bi-calendar-plus"></i> Add to Schedule
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Networking Lunch -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">13:00</span>
+          <span class="end">14:00</span>
+        </div>
+        <div class="session-card break-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track break">BREAK</span>
+              <span class="room">Dining Hall</span>
+            </div>
+            <h3 class="session-title">Networking Lunch</h3>
+            <p class="session-description">
+              A relaxed lunchtime session to build new partnerships and explore collaboration ideas.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- End Lunch -->
+
+      <!-- Startup & Innovator Showcase -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">14:00</span>
+          <span class="end">15:00</span>
+        </div>
+        <div class="session-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track panel">PANEL</span>
+              <span class="room">Innovation Hub</span>
+            </div>
+            <h3 class="session-title">Startup & Innovator Showcase</h3>
+            <p class="session-description">
+              Early-stage ventures and innovators share breakthrough solutions driving change across climate, food, energy, and urban systems.
+            </p>
+          </div>
+          <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+        </div>
+      </div>
+      <!-- End Showcase -->
+
+      <!-- Coffee Break -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">15:00</span>
+          <span class="end">15:30</span>
+        </div>
+        <div class="session-card break-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track break">Break</span>
+              <span class="room">Lobby</span>
+            </div>
+            <h3 class="session-title">Coffee Break</h3>
+            <p class="session-description">A short pause before the afternoon policy and investor dialogue.</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Break -->
+
+      <!-- Policy Roundtable & Investor Dialogue -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">15:30</span>
+          <span class="end">16:30</span>
+        </div>
+        <div class="session-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track panel">PANEL</span>
+              <span class="room">Main Stage</span>
+            </div>
+            <h3 class="session-title">Policy Roundtable & Investor Dialogue</h3>
+            <p class="session-description">
+              Policymakers and investors discuss incentives, regulation, capital flows, and the structural shifts required to scale impact projects.
+            </p>
+          </div>
+          <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+        </div>
+      </div>
+      <!-- End Policy Panel -->
+
+      <!-- Closing Plenary -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">16:30</span>
+          <span class="end">17:15</span>
+        </div>
+        <div class="session-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track plenary">PLENARY</span>
+              <span class="room">Main Stage</span>
+            </div>
+            <h3 class="session-title">Closing Plenary – The Impact Roadmap</h3>
+            <p class="session-description">
+              A synthesis of the day’s insights and a forward-looking roadmap for advancing collective, measurable impact.
+            </p>
+          </div>
+          <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+        </div>
+      </div>
+      <!-- End Closing Plenary -->
+
+      <!-- Farewell -->
+      <div class="session-block">
+        <div class="session-time">
+          <span class="start">17:15</span>
+          <span class="end">17:30</span>
+        </div>
+        <div class="session-card">
+          <div class="session-info">
+            <div class="session-meta">
+              <span class="track plenary">PLENARY</span>
+              <span class="room">Main Stage</span>
+            </div>
+            <h3 class="session-title">Farewell & Next Steps</h3>
+            <p class="session-description">
+              Final reflections and an invitation to continue the journey through follow-up programmes and community initiatives.
+            </p>
+          </div>
+          <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+        </div>
+      </div>
+      <!-- End Farewell -->
+
+    </div>
+  </div>
+</div>
+
+      <div class="tab-pane fade" id="schedule-day-3" role="tabpanel" aria-labelledby="schedule-tab-3">
+        <div class="schedule-content">
+          <p>Day 3 schedule content goes here.</p>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+
+</div>
 </section>
