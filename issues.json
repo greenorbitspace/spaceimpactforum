@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Add Website schema",
+    "body": "Implement JSON-LD Website structured data on the homepage to improve search engine understanding of the site and brand.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add LocalBusiness schema",
+    "body": "Include LocalBusiness structured data for Impact Orbit Creative Group to enhance local search visibility and Google Maps results.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add Event schema for Space Impact Forum",
+    "body": "Add JSON-LD Event schema for all conference dates and sessions to improve rich result display in search engines.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add Person/Professional schema for speakers",
+    "body": "Include structured data for all speakers using Person or Professional schema to improve visibility in knowledge panels.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add FAQPage schema for FAQ page",
+    "body": "Implement FAQPage schema to enable rich results for frequently asked questions about the event.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add Breadcrumb schema",
+    "body": "Implement breadcrumb structured data on all pages to enhance search engine results and improve site navigation display.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add Article schema for white papers and research library",
+    "body": "Use Article or ScholarlyArticle schema for white papers and research library pages to improve SEO and indexing of content.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add CreativeWork schema for event recordings",
+    "body": "Include CreativeWork structured data for past event recordings so they can appear in search engines with rich results.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add Organization schema",
+    "body": "Add Organization structured data for Impact Orbit Creative Group to clarify official entity information for search engines.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add Open Graph and Twitter Card metadata",
+    "body": "Include Open Graph and Twitter Card metadata on all pages to improve social sharing previews and engagement.",
+    "labels": ["enhancement", "SEO", "social"]
+  },
+  {
+    "title": "Optimize meta titles and descriptions",
+    "body": "Review and update meta titles and descriptions for all pages to improve SEO, click-through rate, and keyword relevance.",
+    "labels": ["task", "SEO"]
+  },
+  {
+    "title": "Implement canonical URLs",
+    "body": "Ensure every page has a canonical URL to avoid duplicate content issues and consolidate SEO value.",
+    "labels": ["task", "SEO"]
+  },
+  {
+    "title": "Improve heading structure (H1-H6)",
+    "body": "Review all pages and ensure proper H1-H6 hierarchy for better SEO and accessibility.",
+    "labels": ["task", "SEO"]
+  },
+  {
+    "title": "Add schema for Media & Press page",
+    "body": "Use NewsArticle or PressRelease schema for press releases and media content to improve indexing.",
+    "labels": ["enhancement", "SEO", "schema"]
+  },
+  {
+    "title": "Add schema for Sponsorship page",
+    "body": "Include structured data for Sponsorship opportunities and kit to make it discoverable in search engines.",
+    "labels": ["enhancement", "SEO", "schema"]
+  }
+]
