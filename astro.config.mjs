@@ -4,13 +4,15 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://greenorbit.space',
-  base: '/',
+  site: 'https://greenorbitspace.github.io',
+  base: '/spaceimpactforum/',
+
   integrations: [
     alpinejs(),
     react({ fastRefresh: true }),
     tailwind({ config: { applyBaseStyles: true } }),
   ],
+});
   vite: {
     server: {
       fs: { strict: false },
