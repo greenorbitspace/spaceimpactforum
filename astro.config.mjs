@@ -9,20 +9,20 @@ export default defineConfig({
 
   integrations: [
     alpinejs(),
-    react({ fastRefresh: true }),
-    tailwind({ config: { applyBaseStyles: true } }),
+    react(),
+    tailwind({ applyBaseStyles: true }),
   ],
-});
+
   vite: {
     server: {
       fs: { strict: false },
     },
+
     build: {
       target: 'esnext',
       minify: 'esbuild',
-      chunkSizeWarningLimit: 500, // warn only for large chunks
+      chunkSizeWarningLimit: 500,
       rollupOptions: {
-        external: ['gray-matter', 'node-fetch'],
         output: {
           manualChunks(id) {
             if (id.includes('EarthGlobe')) return 'chunk_earthglobe';
@@ -32,6 +32,7 @@ export default defineConfig({
         },
       },
     },
+
     resolve: {
       alias: {
         '@components': '/src/components',
@@ -41,22 +42,9 @@ export default defineConfig({
         '@assets': '/src/assets',
       },
     },
+
     optimizeDeps: {
       include: ['react', 'react-dom'],
-      exclude: ['lightningcss', 'fsevents', 'gray-matter', 'node-fetch'],
-      esbuildOptions: {
-        loader: {
-          '.ts': 'ts',
-          '.tsx': 'tsx',
-          '.js': 'js',
-          '.jsx': 'jsx',
-        },
-      },
-    },
-    esbuild: {
-      loader: 'tsx',
-      include: /src\/.*\.(ts|tsx|js|jsx|astro)$/,
-      exclude: [],
     },
   },
 });
