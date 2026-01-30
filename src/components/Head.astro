@@ -1,120 +1,134 @@
 ---
 ---
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Space Impact Forum</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Space for Neurodiversity</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
 
   <!-- Favicons -->
-  <link href="/img/favicon.png" rel="icon">
-  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" href="/img/favicon.png" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- Vendor CSS Files -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/vendor/aos/aos.css" rel="stylesheet">
-  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/vendor/aos/aos.css" />
+  <link rel="stylesheet" href="/vendor/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/vendor/glightbox/css/glightbox.min.css" />
 
-  <!-- Main CSS File -->
-  <link href="/styles/global.css" rel="stylesheet">
+  <!-- Main CSS (must be in /public/) -->
+  <link rel="stylesheet" href="/styles/global.css" />
 
-    <!-- Silktide Cookie Banner -->
-  <link rel="stylesheet" id="silktide-consent-manager-css" href="cookie-banner/silktide-consent-manager.css">
-<script src="cookie-banner/silktide-consent-manager.js"></script>
-<script>
-silktideCookieBannerManager.updateCookieBannerConfig({
-  background: {
-    showBackground: true
-  },
-  cookieIcon: {
-    position: "bottomLeft"
-  },
-  cookieTypes: [
-    {
-      id: "necessary",
-      name: "Necessary",
-      description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
-      required: true,
-      onAccept: function() {
-        console.log('Add logic for the required Necessary here');
-      }
-    },
-    {
-      id: "analytics",
-      name: "Analytics",
-      description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
-      defaultValue: true,
-      onAccept: function() {
-        gtag('consent', 'update', {
-          analytics_storage: 'granted',
-        });
-        dataLayer.push({
-          'event': 'consent_accepted_analytics',
-        });
-      },
-      onReject: function() {
-        gtag('consent', 'update', {
-          analytics_storage: 'denied',
-        });
-      }
-    },
-    {
-      id: "advertising",
-      name: "Advertising",
-      description: "<p>These cookies provide extra features and personalisation to improve your experience. They may be set by us or by partners whose services we use.</p>",
-      onAccept: function() {
-        gtag('consent', 'update', {
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted',
-        });
-        dataLayer.push({
-          'event': 'consent_accepted_advertising',
-        });
-      },
-      onReject: function() {
-        gtag('consent', 'update', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-        });
-      }
-    }
-  ],
-  text: {
-    banner: {
-      description: "<p>We use cookies on our site to enhance your user experience, provide personalised content, and analyse our traffic. <a href=\"https://spaceimpactforum.com/cookie-policy\" target=\"_blank\">Cookie Policy.</a></p>",
-      acceptAllButtonText: "Accept all",
-      acceptAllButtonAccessibleLabel: "Accept all cookies",
-      rejectNonEssentialButtonText: "Reject non-essential",
-      rejectNonEssentialButtonAccessibleLabel: "Reject non-essential",
-      preferencesButtonText: "Preferences",
-      preferencesButtonAccessibleLabel: "Toggle preferences"
-    },
-    preferences: {
-      title: "Customise your cookie preferences",
-      description: "<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>",
-      creditLinkText: "Get this banner for free",
-      creditLinkAccessibleLabel: "Get this banner for free"
-    }
-  }
-});
-</script>
+  <!-- ======================================================
+       Silktide Cookie Consent Manager
+       ====================================================== -->
 
-  <!-- =======================================================
-  * Template Name: Eventix
-  * Template URL: https://bootstrapmade.com/eventix-bootstrap-events-website-template/
-  * Updated: Sep 06 2025 with Bootstrap v5.3.8
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link rel="stylesheet" href="/cookie-banner/silktide-consent-manager.css" />
+  <script src="/cookie-banner/silktide-consent-manager.js"></script>
+
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.silktideCookieBannerManager) return;
+
+      window.dataLayer = window.dataLayer || [];
+
+      silktideCookieBannerManager.updateCookieBannerConfig({
+        background: {
+          showBackground: true
+        },
+
+        cookieIcon: {
+          position: "bottomLeft"
+        },
+
+        cookieTypes: [
+          {
+            id: "necessary",
+            name: "Necessary",
+            required: true,
+            description:
+              "<p>These cookies are required for the site to function and cannot be switched off.</p>"
+          },
+
+          {
+            id: "analytics",
+            name: "Analytics",
+            defaultValue: true,
+            description:
+              "<p>These cookies help us understand how the site is used so we can improve it.</p>",
+            onAccept: function () {
+              if (window.gtag) {
+                gtag("consent", "update", {
+                  analytics_storage: "granted"
+                });
+              }
+              dataLayer.push({ event: "consent_accepted_analytics" });
+            },
+            onReject: function () {
+              if (window.gtag) {
+                gtag("consent", "update", {
+                  analytics_storage: "denied"
+                });
+              }
+            }
+          },
+
+          {
+            id: "advertising",
+            name: "Advertising",
+            description:
+              "<p>These cookies support enhanced features and personalisation.</p>",
+            onAccept: function () {
+              if (window.gtag) {
+                gtag("consent", "update", {
+                  ad_storage: "granted",
+                  ad_user_data: "granted",
+                  ad_personalization: "granted"
+                });
+              }
+            },
+            onReject: function () {
+              if (window.gtag) {
+                gtag("consent", "update", {
+                  ad_storage: "denied",
+                  ad_user_data: "denied",
+                  ad_personalization: "denied"
+                });
+              }
+            }
+          }
+        ],
+
+        text: {
+          banner: {
+            description:
+              '<p>We use cookies to enhance your experience and analyse site usage. <a href="https://spaceimpactforum.com/cookie-policy" target="_blank" rel="noopener">Cookie policy</a>.</p>',
+            acceptAllButtonText: "Accept all",
+            rejectNonEssentialButtonText: "Reject non-essential",
+            preferencesButtonText: "Preferences"
+          },
+
+          preferences: {
+            title: "Customise your cookie preferences",
+            description:
+              "<p>You can choose which types of cookies you allow. Your choices apply across the site.</p>"
+          }
+        }
+      });
+    });
+  </script>
+
 </head>
+
+<body class="index-page">
