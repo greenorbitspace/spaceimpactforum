@@ -159,23 +159,11 @@ export const collections = {
   news: defineCollection({ schema: baseSchema }),
   resources: defineCollection({ schema: baseSchema }),
   "press-releases": defineCollection({ schema: baseSchema }),
-  tools: defineCollection({ schema: baseSchema }),
-  insights: defineCollection({ schema: baseSchema }),
-  "space-sustainability": defineCollection({ schema: baseSchema }),
-  campaigns: defineCollection({ schema: baseSchema }),
-  careers: defineCollection({ schema: baseSchema }),
-  domains: defineCollection({ schema: baseSchema }),
-  earth: defineCollection({ schema: baseSchema }),
-  pledges: defineCollection({ schema: baseSchema }),
-  team: defineCollection({ schema: baseSchema }),
-  training: defineCollection({ schema: baseSchema }),
   values: defineCollection({ schema: baseSchema }),
-
   "case-studies": defineCollection({ schema: caseStudySchema }),
   sectors: defineCollection({ schema: sectorSchema }),
   "global-challenges": defineCollection({ schema: globalChallengeSchema }),
   "space-applications": defineCollection({ schema: spaceAppSchema }),
-  organisations: defineCollection({ schema: baseSchema }),
 };
 
 /**
