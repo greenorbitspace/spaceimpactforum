@@ -160,8 +160,6 @@ export const collections = {
   resources: defineCollection({ schema: baseSchema }),
   "press-releases": defineCollection({ schema: baseSchema }),
   values: defineCollection({ schema: baseSchema }),
-  "case-studies": defineCollection({ schema: caseStudySchema }),
-  sectors: defineCollection({ schema: sectorSchema }),
   "global-challenges": defineCollection({ schema: globalChallengeSchema }),
   "space-applications": defineCollection({ schema: spaceAppSchema }),
 };
