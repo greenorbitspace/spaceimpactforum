@@ -1,35 +1,11 @@
----
----
+Consent Manager Installation Instructions
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Space Impact Forum</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+1. Extract the contents of this zip file
+2. Place the files in your website directory
+3. Add the following code to your HTML page, inside the <head> tag:
 
-  <!-- Favicons -->
-  <link href="/img/favicon.png" rel="icon">
-  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/vendor/aos/aos.css" rel="stylesheet">
-  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="/styles/global.css" rel="stylesheet">
-
-    <!-- Silktide Cookie Banner -->
-  <link rel="stylesheet" id="silktide-consent-manager-css" href="cookie-banner/silktide-consent-manager.css">
-<script src="cookie-banner/silktide-consent-manager.js"></script>
+<link rel="stylesheet" id="silktide-consent-manager-css" href="path-to-css/silktide-consent-manager.css">
+<script src="path-to-js/silktide-consent-manager.js"></script>
 <script>
 silktideCookieBannerManager.updateCookieBannerConfig({
   background: {
@@ -92,7 +68,7 @@ silktideCookieBannerManager.updateCookieBannerConfig({
   ],
   text: {
     banner: {
-      description: "<p>We use cookies on our site to enhance your user experience, provide personalised content, and analyse our traffic. <a href=\"https://spaceimpactforum.com/cookie-policy\" target=\"_blank\">Cookie Policy.</a></p>",
+      description: "<p>We use cookies on our site to enhance your user experience, provide personalised content, and analyse our traffic. <a href=\"https://greenorbit.academy/cookie-policy\" target=\"_blank\">Cookie Policy.</a></p>",
       acceptAllButtonText: "Accept all",
       acceptAllButtonAccessibleLabel: "Accept all cookies",
       rejectNonEssentialButtonText: "Reject non-essential",
@@ -109,12 +85,3 @@ silktideCookieBannerManager.updateCookieBannerConfig({
   }
 });
 </script>
-
-  <!-- =======================================================
-  * Template Name: Eventix
-  * Template URL: https://bootstrapmade.com/eventix-bootstrap-events-website-template/
-  * Updated: Sep 06 2025 with Bootstrap v5.3.8
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
