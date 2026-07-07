@@ -1,0 +1,48 @@
+{
+  "tiers": [
+    {
+      "id": "platinum",
+      "label": "Platinum Sponsors",
+      "description": "Our strategic partners shaping the Forum and global innovation agendas.",
+      "sponsors": [
+        { "name": "Platinum Sponsor 1", "logo": "/assets/images/sponsors/logo-platinum1.png", "url": "" },
+        { "name": "Platinum Sponsor 2", "logo": "/assets/images/sponsors/logo-platinum2.png", "url": "" },
+        { "name": "Platinum Sponsor 3", "logo": "/assets/images/sponsors/logo-platinum3.png", "url": "" }
+      ]
+    },
+    {
+      "id": "gold",
+      "label": "Gold Sponsors",
+      "description": "Key partners supporting Labs, workshops, and research initiatives.",
+      "sponsors": [
+        { "name": "Gold Sponsor 1", "logo": "/assets/images/sponsors/logo-gold1.png", "url": "" },
+        { "name": "Gold Sponsor 2", "logo": "/assets/images/sponsors/logo-gold2.png", "url": "" },
+        { "name": "Gold Sponsor 3", "logo": "/assets/images/sponsors/logo-gold3.png", "url": "" },
+        { "name": "Gold Sponsor 4", "logo": "/assets/images/sponsors/logo-gold4.png", "url": "" }
+      ]
+    },
+    {
+      "id": "silver",
+      "label": "Silver Sponsors",
+      "description": "Supporting the Forum's events, community engagement, and Lab activities.",
+      "sponsors": [
+        { "name": "Silver Sponsor 1", "logo": "/assets/images/sponsors/logo-silver1.png", "url": "" },
+        { "name": "Silver Sponsor 2", "logo": "/assets/images/sponsors/logo-silver2.png", "url": "" },
+        { "name": "Silver Sponsor 3", "logo": "/assets/images/sponsors/logo-silver3.png", "url": "" },
+        { "name": "Silver Sponsor 4", "logo": "/assets/images/sponsors/logo-silver4.png", "url": "" },
+        { "name": "Silver Sponsor 5", "logo": "/assets/images/sponsors/logo-silver5.png", "url": "" }
+      ]
+    },
+    {
+      "id": "lab",
+      "label": "Lab-Specific Sponsors",
+      "description": "Sponsors contributing to specific Labs and targeted impact areas.",
+      "sponsors": [
+        { "name": "Food Impact Lab", "logo": "/assets/images/sponsors/logo-foodlab.png", "url": "", "lab": "Food Impact Lab" },
+        { "name": "Energy Impact Lab", "logo": "/assets/images/sponsors/logo-energylab.png", "url": "", "lab": "Energy Impact Lab" },
+        { "name": "Environment Impact Lab", "logo": "/assets/images/sponsors/logo-environmentlab.png", "url": "", "lab": "Environment Impact Lab" },
+        { "name": "Urban Impact Lab", "logo": "/assets/images/sponsors/logo-urbanlab.png", "url": "", "lab": "Urban Impact Lab" }
+      ]
+    }
+  ]
+}

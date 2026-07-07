@@ -1,5 +1,16 @@
 ---
 import speakers from "../data/speakers.json";
+import schedule from "../data/schedule.json";
+
+// Cross-reference each speaker with the session(s) they appear in, so we don't
+// have to duplicate speaker records per-session in the data file.
+const allSessions = schedule.days.flatMap((day) =>
+  day.sessions.map((session) => ({ ...session, dayLabel: day.label, date: day.date }))
+);
+
+function sessionsFor(speakerId: string) {
+  return allSessions.filter((s) => (s.speakerIds ?? []).includes(speakerId));
+}
 ---
 
 <section id="speakers" class="speakers section">
@@ -7,65 +18,70 @@ import speakers from "../data/speakers.json";
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>Speakers</h2>
-    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    <p>Meet the practitioners, researchers and founders driving sustainable impact through space.</p>
   </div>
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row g-4">
 
-      {speakers?.length > 0 ? speakers.map((speaker, index) => (
-        <div
-          class="col-lg-4 col-md-6"
-          data-aos="fade-up"
-          data-aos-delay={200 + index * 50}
-          key={speaker.id || index}
-        >
-          <div class="speaker-card">
+      {speakers?.length > 0 ? speakers.map((speaker, index) => {
+        const talks = sessionsFor(speaker.id);
+        return (
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay={200 + index * 50}
+            id={`speaker-${speaker.id}`}
+          >
+            <div class="speaker-card">
 
-            {/* Speaker Image */}
-            <div class="speaker-image">
-              <img
-                src={speaker.image || "/img/default-speaker.webp"}
-                alt={`${speaker.name || "Speaker"}, ${speaker.title || ""} at ${speaker.company || ""}`}
-                class="img-fluid"
-                loading="lazy"
-              />
+              {/* Speaker Image */}
+              <div class="speaker-image">
+                <img
+                  src={speaker.image || "/img/default-speaker.webp"}
+                  alt={`${speaker.name || "Speaker"}, ${speaker.title || ""} at ${speaker.company || ""}`}
+                  class="img-fluid"
+                  loading="lazy"
+                />
 
-              {/* Social Links */}
-              <div class="speaker-overlay">
-                <div class="social-links">
-                  {speaker.social?.linkedin ? (
-                    <a href={speaker.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                      <i class="bi bi-linkedin"></i>
-                    </a>
-                  ) : null}
-                  {speaker.social?.twitter ? (
-                    <a href={speaker.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                      <i class="bi bi-twitter"></i>
-                    </a>
-                  ) : null}
+                {/* Social Links */}
+                <div class="speaker-overlay">
+                  <div class="social-links">
+                    {speaker.social?.linkedin ? (
+                      <a href={speaker.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                      </a>
+                    ) : null}
+                    {speaker.social?.twitter ? (
+                      <a href={speaker.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <i class="bi bi-twitter"></i>
+                      </a>
+                    ) : null}
+                  </div>
                 </div>
               </div>
+
+              {/* Speaker Content */}
+              <div class="speaker-content">
+                {talks[0] && <div class="speaker-badge">{talks[0].dayLabel}</div>}
+                <h4>{speaker.name || "Anonymous"}</h4>
+                <p class="speaker-title">{speaker.title || ""}</p>
+                <p class="speaker-company">{speaker.company || ""}</p>
+                <p class="speaker-bio">{speaker.bio || ""}</p>
+
+                {talks.length > 0 && (
+                  <div class="speaker-session" style="display:flex; flex-wrap:wrap; gap:8px;">
+                    {talks.map((talk) => (
+                      <a href="#schedule" class="session-topic">{talk.title}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
             </div>
-
-            {/* Speaker Content */}
-            <div class="speaker-content">
-              {speaker.badge && <div class="speaker-badge">{speaker.badge}</div>}
-              <h4>{speaker.name || "Anonymous"}</h4>
-              <p class="speaker-title">{speaker.title || ""}</p>
-              <p class="speaker-company">{speaker.company || ""}</p>
-              <p class="speaker-bio">{speaker.bio || ""}</p>
-
-              {speaker.session?.topic && (
-                <div class="speaker-session">
-                  <span class="session-topic">{speaker.session.topic}</span>
-                </div>
-              )}
-            </div>
-
           </div>
-        </div>
-      )) : (
+        );
+      }) : (
         <p>No speakers available at the moment.</p>
       )}
 

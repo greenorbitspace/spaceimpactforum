@@ -1,8 +1,50 @@
 ---
 // Schedule.astro
+// Fully data-driven from src/data/schedule.json + src/data/speakers.json.
+// Day + track filtering handled client-side with Alpine (already a project
+// dependency), so all sessions stay in the DOM (good for SEO/crawlers) and
+// are simply shown/hidden.
+
+import schedule from "../data/schedule.json";
+import speakers from "../data/speakers.json";
+import { buildSingleEventIcs, icsToDataUri } from "../lib/ics";
+
+const speakerById = new Map(speakers.map((s) => [s.id, s]));
+
+const eventMeta = {
+  id: schedule.event.id,
+  name: schedule.event.name,
+  location: schedule.event.location?.name,
+  timezone: schedule.event.timezone,
+};
+
+// Pre-build a data: URI .ics download for every session at build time — no client JS or server round-trip needed.
+function sessionIcsHref(day: (typeof schedule.days)[number], session: (typeof day.sessions)[number]) {
+  const ics = buildSingleEventIcs(
+    {
+      id: session.id,
+      title: session.title,
+      description: session.description,
+      room: session.room,
+      date: day.date,
+      start: session.start,
+      end: session.end,
+      speakerNames: (session.speakerIds ?? [])
+        .map((id: string) => speakerById.get(id)?.name)
+        .filter((n): n is string => Boolean(n)),
+    },
+    eventMeta
+  );
+  return icsToDataUri(ics);
+}
+
+function formatDayDate(dateStr: string) {
+  const d = new Date(`${dateStr}T00:00:00`);
+  return d.toLocaleDateString("en-GB", { month: "short", day: "numeric" });
+}
 ---
 
-<section id="schedule" class="schedule section">
+<section id="schedule" class="schedule section" x-data={`{ activeDay: '${schedule.days[0]?.id ?? ""}', activeTrack: 'all' }`}>
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>Schedule</h2>
@@ -14,141 +56,158 @@
     <!-- Day Tabs -->
     <div class="schedule-header">
       <ul class="nav nav-tabs" id="schedule-tabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="schedule-tab-1" data-bs-toggle="tab" data-bs-target="#schedule-day-1" type="button" role="tab" aria-controls="schedule-day-1" aria-selected="true">
-            Oct 15<br>Monday
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="schedule-tab-2" data-bs-toggle="tab" data-bs-target="#schedule-day-2" type="button" role="tab" aria-controls="schedule-day-2" aria-selected="false">
-            Oct 16<br>Tuesday
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="schedule-tab-3" data-bs-toggle="tab" data-bs-target="#schedule-day-3" type="button" role="tab" aria-controls="schedule-day-3" aria-selected="false">
-            Oct 17<br>Wednesday
-          </button>
-        </li>
+        {schedule.days.map((day, i) => (
+          <li class="nav-item" role="presentation">
+            <button
+              type="button"
+              class="nav-link"
+              role="tab"
+              :class={`{ active: activeDay === '${day.id}' }`}
+              @click={`activeDay = '${day.id}'`}
+              :aria-selected={`activeDay === '${day.id}'`}
+            >
+              {formatDayDate(day.date)}<br />{day.label}
+            </button>
+          </li>
+        ))}
       </ul>
+    </div>
+
+    <!-- Track Filter -->
+    <div class="track-filter" role="group" aria-label="Filter sessions by track">
+      <button
+        type="button"
+        class="track-filter-btn"
+        :class="{ active: activeTrack === 'all' }"
+        @click="activeTrack = 'all'"
+      >
+        All sessions
+      </button>
+      {schedule.tracks.map((track) => (
+        <button
+          type="button"
+          class={`track-filter-btn track ${track.cssClass}`}
+          :class={`{ active: activeTrack === '${track.id}' }`}
+          @click={`activeTrack = '${track.id}'`}
+        >
+          {track.label}
+        </button>
+      ))}
     </div>
 
     <!-- Tab Content -->
     <div class="tab-content" id="schedule-tabContent">
-
-      <!-- Day 1 -->
-      <div class="tab-pane fade show active" id="schedule-day-1" role="tabpanel" aria-labelledby="schedule-tab-1">
-        <div class="schedule-content">
+      {schedule.days.map((day) => (
+        <div class="schedule-content" x-show={`activeDay === '${day.id}'`} x-cloak>
           <div class="session-timeline">
-
-            <!-- Example Session Block -->
-            <div class="session-block">
-              <div class="session-time">
-                <span class="start">08:30</span>
-                <span class="end">09:00</span>
-              </div>
-              <div class="session-card">
-                <div class="session-info">
-                  <div class="session-meta">
-                    <span class="track break">Networking</span>
-                    <span class="room">Main Stage</span>
+            {day.sessions.map((session) => {
+              const track = schedule.tracks.find((t) => t.id === session.track);
+              const sessionSpeakers = (session.speakerIds ?? [])
+                .map((id) => speakerById.get(id))
+                .filter(Boolean);
+              return (
+                <div
+                  class="session-block"
+                  x-show={`activeTrack === 'all' || activeTrack === '${session.track}'`}
+                  x-cloak
+                >
+                  <div class="session-time">
+                    <span class="start">{session.start}</span>
+                    <span class="end">{session.end}</span>
                   </div>
-                  <h3 class="session-title">Arrival & Registration</h3>
-                  <p class="session-description">Welcome refreshments and networking as participants arrive and collect badges.</p>
-                  <div class="speaker-info">
-                    <img src="img/person/person-f-4.webp" class="speaker-avatar img-fluid" alt="">
-                    <div class="speaker-details">
-                      <h4 class="speaker-name">Event Host Team</h4>
-                      <span class="speaker-role">Welcome & Orientation</span>
-                    </div>
-                  </div>
-                </div>
-                <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
-              </div>
-            </div>
-            <!-- Repeat similar session blocks for all Day 1 sessions -->
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Day 2 -->
-      <div class="tab-pane fade" id="schedule-day-2" role="tabpanel" aria-labelledby="schedule-tab-2">
-        <div class="schedule-content">
-          <div class="session-timeline">
-
-            <!-- Morning Kickoff -->
-            <div class="session-block">
-              <div class="session-time">
-                <span class="start">09:00</span>
-                <span class="end">09:15</span>
-              </div>
-              <div class="session-card">
-                <div class="session-info">
-                  <div class="session-meta">
-                    <span class="track plenary">PLENARY</span>
-                    <span class="room">Main Stage</span>
-                  </div>
-                  <h3 class="session-title">Morning Kickoff</h3>
-                  <p class="session-description">A brief welcome to set the tone for Day 2, outlining the key themes and collaboration opportunities ahead.</p>
-                </div>
-                <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
-              </div>
-            </div>
-
-            <!-- Parallel Labs Round 1 -->
-            <div class="session-block">
-              <div class="session-time mb-4">
-                <span class="start">10:00</span>
-                <span class="end">11:30</span>
-              </div>
-              <div class="row gy-4">
-                <!-- Environment Lab -->
-                <div class="col-lg-3 col-md-6">
-                  <div class="session-card enhanced">
+                  <div class="session-card">
                     <div class="session-info">
                       <div class="session-meta">
-                        <span class="track environment">ENVIRONMENT</span>
-                        <span class="room">Lab 1</span>
+                        <span class={`track ${track?.cssClass ?? ""}`}>{track?.label ?? session.track}</span>
+                        {session.room && <span class="room">{session.room}</span>}
                       </div>
-                      <h3 class="session-title">Environment Lab</h3>
-                      <p class="session-description">Hands-on workshop examining climate resilience strategies, emissions reduction pathways, and adaptation tools.</p>
+                      <h3 class="session-title">{session.title}</h3>
+                      {session.description && <p class="session-description">{session.description}</p>}
+
+                      {sessionSpeakers.length > 0 && (
+                        <div class="session-speakers">
+                          {sessionSpeakers.map((speaker) => (
+                            <a href={`#speaker-${speaker!.id}`} class="speaker-info">
+                              <img src={speaker!.image} class="speaker-avatar img-fluid" alt="" loading="lazy" />
+                              <div class="speaker-details">
+                                <h4 class="speaker-name">{speaker!.name}</h4>
+                                <span class="speaker-role">{speaker!.title}</span>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <button class="add-to-schedule"><i class="bi bi-calendar-plus"></i> Add to Schedule</button>
+                    <a
+                      href={sessionIcsHref(day, session)}
+                      download={`${session.id}.ics`}
+                      class="add-to-schedule"
+                    >
+                      <i class="bi bi-calendar-plus"></i> Add to Calendar
+                    </a>
                   </div>
                 </div>
-                <!-- Repeat other labs for Food, Energy, Urban -->
-              </div>
-            </div>
-
-            <!-- Coffee Break -->
-            <div class="session-block">
-              <div class="session-time">
-                <span class="start">11:30</span>
-                <span class="end">12:00</span>
-              </div>
-              <div class="session-card break-card">
-                <div class="session-info">
-                  <div class="session-meta">
-                    <span class="track break">Break</span>
-                    <span class="room">Lobby</span>
-                  </div>
-                  <h3 class="session-title">Coffee Break</h3>
-                  <p class="session-description">Refreshments and networking before the next round of workshops.</p>
-                </div>
-              </div>
-            </div>
-
+              );
+            })}
           </div>
         </div>
-      </div>
-
-      <!-- Day 3 Placeholder -->
-      <div class="tab-pane fade" id="schedule-day-3" role="tabpanel" aria-labelledby="schedule-tab-3">
-        <div class="schedule-content">
-          <p>Day 3 schedule content goes here.</p>
-        </div>
-      </div>
-
+      ))}
     </div>
+
+    <!-- Calendar Actions -->
+    <div class="schedule-actions">
+      <a href="/schedule.ics" download="space-impact-forum-schedule.ics" class="btn btn-primary">
+        <i class="bi bi-download"></i> Download Full Schedule (.ics)
+      </a>
+      <a href="webcal://spaceimpactforum.com/schedule.ics" class="btn btn-outline">
+        <i class="bi bi-calendar-week"></i> Subscribe in Calendar App
+      </a>
+    </div>
+
   </div>
 </section>
+
+<style>
+  [x-cloak] { display: none !important; }
+
+  .track-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 32px;
+  }
+
+  .track-filter-btn {
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 75%);
+    background: transparent;
+    color: var(--default-color);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .track-filter-btn:hover {
+    border-color: var(--accent-color);
+  }
+
+  .track-filter-btn.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .session-speakers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .session-speakers .speaker-info {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

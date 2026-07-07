@@ -1,117 +1,119 @@
-![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/larry-xue/astro-sassify-template?utm_source=oss&utm_medium=github&utm_campaign=larry-xue%2Fastro-sassify-template&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+# Space Impact Forum — Dynamic Schedule, Speakers, Sponsors & ICS
 
-# Astro Sassify Template
+Drop these files into the matching paths in `spaceimpactforum` (they replace the
+existing files at those paths) and commit. Build was verified locally with
+`npm install && npx astro build` — 21 pages built clean, including the new
+`/schedule.ics` route.
 
-A modern, responsive Astro template with Tailwind CSS and Alpine.js integration. This template provides a solid foundation for building fast, SEO-friendly websites with a clean design system.
+## What changed
 
-## 🚀 Features
+**New/rebuilt files**
+- `src/data/schedule.json` — enriched schema: each session now has `description`,
+  `track`, `room`, and `speakerIds` (cross-referencing speakers instead of
+  duplicating them). `tracks` array at the top drives the filter UI and colour
+  taxonomy that was already defined in your CSS (keynote/panel/climate/economic/
+  societal/policy/environment/energy/food/urban/break).
+- `src/data/speakers.json` — de-duplicated: each speaker now appears once, with
+  their session(s) resolved automatically from `schedule.json` rather than
+  needing a separate JSON entry per talk.
+- `src/data/sponsors.json` — new. Tiered (`platinum`/`gold`/`silver`/`lab`)
+  sponsor list that now actually drives `sponsors.astro`.
+- `src/lib/ics.ts` — new. Dependency-free RFC 5545 ICS generator: builds both
+  single-session `.ics` files and the full-event feed.
+- `src/pages/schedule.ics.ts` — new. Static endpoint generated at build time,
+  live at `spaceimpactforum.com/schedule.ics`. This is what powers "Subscribe
+  in Calendar App" (Google Calendar → Add by URL, Apple Calendar → New
+  Calendar Subscription, Outlook → Add calendar → From internet).
+- `src/components/Schedule.astro` — rebuilt to render entirely from
+  `schedule.json`. Day tabs + a track filter bar, both handled client-side
+  with Alpine (already in your stack, so no new JS dependency). Every session
+  gets an "Add to Calendar" link that downloads a real `.ics` file — generated
+  at build time as a data URI, so it works with zero client-side JS or server
+  round-trip. Kept your existing `session-block`/`session-card`/`track` CSS
+  classes so the existing responsive styling (mobile breakpoints already in
+  `global.css`) just applies.
+- `src/components/Speakers.astro` — updated for the new schema, adds
+  `id="speaker-{id}"` anchors so schedule session cards can deep-link to a
+  speaker, and lists each speaker's actual session(s) pulled live from the
+  schedule instead of a hardcoded topic string.
+- `src/pages/sponsors.astro` — rebuilt to loop over `sponsors.json` instead of
+  hardcoded per-logo HTML.
 
-- [Astro](https://astro.build/) - The web framework for content-driven websites
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Alpine.js](https://alpinejs.dev/) - Lightweight JavaScript framework for interactivity
-- Responsive design system with custom color palette
-- Dark mode support
-- Smooth page transitions
-- Performance optimized
-- SEO-friendly
+## What's still placeholder
 
-## 📦 Project Structure
+I don't have your real speaker names/bios, sponsor logos, or confirmed session
+titles — I kept the structure realistic (space-sector-flavoured) but it's
+sample data. To go live:
 
-```text
-/
-├── public/             # Static assets
-│   └── favicon.svg
-├── src/
-│   ├── assets/         # Images and other assets
-│   ├── components/     # Reusable UI components
-│   ├── layouts/        # Page layouts
-│   ├── pages/          # Page routes
-│   ├── scripts/        # JavaScript utilities
-│   └── styles/         # Global styles
-│       ├── global.css
-│       └── transitions.css
-├── astro.config.mjs    # Astro configuration
-└── package.json        # Project dependencies
-```
+1. Edit `src/data/schedule.json` — update `event.startDate` / `endDate` /
+   `timezone`, and each session's `title`, `description`, `start`/`end`,
+   `room`, and `speakerIds`.
+2. Edit `src/data/speakers.json` — real names, titles, companies, bios,
+   `image` paths, and social links.
+3. Edit `src/data/sponsors.json` — real sponsor names, `logo` paths (drop
+   files into `public/assets/images/sponsors/`), and `url`.
+4. Nothing else needs to change — Schedule, Speakers and Sponsors pages, and
+   the `.ics` feed, all regenerate automatically from those three files.
 
-## 🧞 Commands
+## Indico integration
 
-All commands are run from the root of the project, from a terminal:
+Your repo already had `src/lib/indico.ts` and `src/lib/normaliseAgenda.ts` as
+stubs, but they didn't match Indico's real API — they assumed a flat
+`results` array, when Indico's actual `/export/timetable/{eventId}.json`
+response is nested by day (`YYYYMMDD`) and entry ID, with three entry types
+(`Contribution`, `Break`, `SessionBlock` — the latter nests further entries
+inside it). I've rewritten both against Indico's documented schema and
+tested the transform logic against a sample matching their docs.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+**Two ways to use Indico, not mutually exclusive:**
 
-## 🎨 Customization
+1. **Zero code — link straight to Indico's own `.ics` export.** Indico
+   natively exports iCal per event/timetable (`{host}/export/timetable/
+   {eventId}.ics`). If you're happy pointing "Subscribe in Calendar App"
+   directly at Indico instead of my generated `/schedule.ics`, that's a
+   one-line link change, no sync needed.
+2. **Keep this site's nicer UI (day tabs, track filters, speaker
+   cross-linking), but let Indico be the source of truth for content.**
+   `scripts/sync-schedule-from-indico.mjs` fetches your Indico timetable,
+   normalises it into the same shape as `schedule.json`/`speakers.json`, and
+   merges it in:
+   - `schedule.json`'s `event` metadata and your custom `tracks` colour
+     taxonomy are preserved — only `days`/`sessions` get replaced with the
+     fresh Indico pull.
+   - `speakers.json` entries you've hand-edited (bio, photo, socials) are
+     kept as-is; only genuinely new speakers get added, as stubs with empty
+     bio/title/company for you to fill in (Indico's presenter records
+     usually only give a name + affiliation, not a bio or photo).
 
-### Colors
-
-The template includes a custom color palette defined in `src/styles/global.css`:
-
-- Primary: Purple-based color scheme
-- Secondary: Slate-based color scheme
-- Accent: Lime-based color scheme
-- Warning: Yellow-based color scheme
-
-You can customize these colors by editing the `src/styles/global.css` file.
-
-### Typography
-
-The template uses the following font families:
-
-- Sans: Inter (with system fallbacks)
-- Display: Lexend (with system fallbacks)
-
-### Animations
-
-Custom animations are included:
-- Fade In
-- Slide Up
-- Slide Down
-
-## 🚀 Getting Started
-
-There are two ways to use this template:
-
-### Option 1: Using Astro CLI (Recommended)
-
-Create a project directly with Astro's official CLI tool:
-
-```bash
-npm create astro@latest -- --template larry-xue/astro-sassify-template
-```
-
-### Option 2: Manual Clone
-
-1. Clone this repository
-   ```bash
-   git clone https://github.com/larry-xue/astro-sassify-template.git my-project
-   cd my-project
+   Run it with:
    ```
-
-2. Install dependencies
-   ```bash
-   npm install
+   INDICO_HOST=https://your-indico-instance.org \
+   INDICO_EVENT_ID=12345 \
+   npx tsx scripts/sync-schedule-from-indico.mjs
    ```
+   Add `INDICO_API_KEY=...` if the event isn't fully public. `tsx` isn't in
+   your `package.json` yet — `npx tsx` fetches it on demand, or add it as a
+   devDependency if you'll run this regularly (e.g. in CI before each build).
 
-3. Start the development server
-   ```bash
-   npm run dev
-   ```
+**What I need from you to actually wire and test this end-to-end:** your
+Indico host URL and the numeric event ID for the Forum (and whether it's a
+public event or needs an API key). I validated the transform logic against
+Indico's documented sample response, but haven't been able to test against
+your real instance — field availability (tracks, rooms, presenter
+affiliations) can vary a bit by Indico version/config, so it's worth a real
+run before you rely on it.
 
-4. Visit `http://localhost:4321` in your browser to see your site
 
-## 📝 License
 
-MIT
-
-## 👀 Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Alpine.js Documentation](https://alpinejs.dev/start-here)
+- `schedule.ics.ts` needs static output (which your `astro.config.mjs`
+  already uses) — it's generated once at build time, not per-request, which
+  fits your GitHub Pages deploy.
+- ICS times use `DTSTART;TZID=Europe/London` (no embedded VTIMEZONE block).
+  I validated the feed against Python's `icalendar` parser and it resolves
+  correctly to BST/GMT, and this pattern is accepted by Google/Apple/Outlook
+  in practice — but worth a real "add to calendar" test once you're on real
+  dates, since strict RFC 5545 technically wants a VTIMEZONE component too.
+- The homepage hero/copy elsewhere on the live site still has some inconsistent
+  dates (Sept vs Oct) and generic template copy — worth a pass once real dates
+  are locked, since `schedule.json`'s `event.startDate`/`endDate` won't
+  automatically sync to hero text elsewhere on the site.

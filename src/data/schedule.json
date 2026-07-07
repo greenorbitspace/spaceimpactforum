@@ -2,9 +2,29 @@
   "event": {
     "id": "space-impact-forum-2025",
     "name": "Space Impact Forum",
+    "tagline": "Advancing Sustainability & Innovation in Space",
     "startDate": "2025-10-15",
-    "endDate": "2025-10-17"
+    "endDate": "2025-10-17",
+    "timezone": "Europe/London",
+    "location": {
+      "name": "Main Venue",
+      "address": "TBC"
+    }
   },
+  "tracks": [
+    { "id": "plenary", "label": "Plenary", "cssClass": "plenary" },
+    { "id": "keynote", "label": "Keynote", "cssClass": "keynote" },
+    { "id": "panel", "label": "Panel", "cssClass": "panel" },
+    { "id": "climate", "label": "Climate", "cssClass": "climate" },
+    { "id": "economic", "label": "Economic", "cssClass": "economic" },
+    { "id": "societal", "label": "Societal", "cssClass": "societal" },
+    { "id": "policy", "label": "Policy", "cssClass": "policy" },
+    { "id": "environment", "label": "Environment", "cssClass": "environment" },
+    { "id": "energy", "label": "Energy", "cssClass": "energy" },
+    { "id": "food", "label": "Food", "cssClass": "food" },
+    { "id": "urban", "label": "Urban", "cssClass": "urban" },
+    { "id": "networking", "label": "Networking", "cssClass": "break" }
+  ],
   "days": [
     {
       "id": "day-1",
@@ -14,29 +34,123 @@
         {
           "id": "registration",
           "type": "break",
+          "track": "networking",
           "title": "Arrival & Registration",
+          "description": "Welcome refreshments and networking as participants arrive and collect badges.",
           "start": "08:30",
           "end": "09:00",
           "room": "Main Stage",
-          "track": "networking"
+          "speakerIds": []
         },
         {
           "id": "opening-plenary",
           "type": "plenary",
+          "track": "plenary",
           "title": "Opening Plenary",
+          "description": "Framing the Forum's mission: how space-derived data and infrastructure accelerate progress on climate, food, energy and urban resilience.",
           "start": "09:00",
           "end": "09:30",
           "room": "Room A",
-          "track": "plenary"
+          "speakerIds": ["amara-okafor"]
         },
         {
           "id": "keynote-global-impact",
           "type": "keynote",
-          "title": "Global Impact Keynote",
+          "track": "keynote",
+          "title": "Global Impact Keynote: Earth Observation for a Changing Planet",
+          "description": "A look at how satellite Earth observation is reshaping climate adaptation and disaster response worldwide.",
           "start": "09:30",
           "end": "10:15",
           "room": "Room B",
-          "track": "keynote"
+          "speakerIds": ["hiroshi-tanaka"]
+        },
+        {
+          "id": "coffee-break-1",
+          "type": "break",
+          "track": "networking",
+          "title": "Coffee Break",
+          "description": "Refreshments and networking.",
+          "start": "10:15",
+          "end": "10:45",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "panel-climate-data",
+          "type": "panel",
+          "track": "climate",
+          "title": "Panel: Turning Climate Data into Climate Action",
+          "description": "Practitioners discuss the gap between satellite-derived climate data and decisions made by governments and industry.",
+          "start": "10:45",
+          "end": "11:45",
+          "room": "Room A",
+          "speakerIds": ["amara-okafor", "leila-haddad", "tomas-novak"]
+        },
+        {
+          "id": "lunch-1",
+          "type": "break",
+          "track": "networking",
+          "title": "Lunch",
+          "description": "Networking lunch for all delegates.",
+          "start": "11:45",
+          "end": "13:00",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "keynote-new-space-economy",
+          "type": "keynote",
+          "track": "economic",
+          "title": "Keynote: Financing the New Space Economy",
+          "description": "How investment models are adapting to fund sustainable, impact-driven space ventures.",
+          "start": "13:00",
+          "end": "13:45",
+          "room": "Room B",
+          "speakerIds": ["tomas-novak"]
+        },
+        {
+          "id": "societal-panel",
+          "type": "panel",
+          "track": "societal",
+          "title": "Panel: Space for Social Good",
+          "description": "Exploring how space applications support health access, connectivity and disaster relief in underserved regions.",
+          "start": "13:45",
+          "end": "14:45",
+          "room": "Room A",
+          "speakerIds": ["leila-haddad", "priya-nair"]
+        },
+        {
+          "id": "coffee-break-2",
+          "type": "break",
+          "track": "networking",
+          "title": "Coffee Break",
+          "description": "Refreshments and networking.",
+          "start": "14:45",
+          "end": "15:15",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "policy-fireside",
+          "type": "panel",
+          "track": "policy",
+          "title": "Fireside Chat: Regulation & Sustainable Space Policy",
+          "description": "A candid conversation on the policy frameworks needed to keep the space sector both innovative and sustainable.",
+          "start": "15:15",
+          "end": "16:00",
+          "room": "Room B",
+          "speakerIds": ["priya-nair"]
+        },
+        {
+          "id": "networking-reception",
+          "type": "break",
+          "track": "networking",
+          "title": "Welcome Reception",
+          "description": "Evening networking reception to close out Day 1.",
+          "start": "17:30",
+          "end": "19:00",
+          "room": "Main Stage",
+          "speakerIds": []
         }
       ]
     },
@@ -48,11 +162,185 @@
         {
           "id": "day-2-kickoff",
           "type": "plenary",
+          "track": "plenary",
           "title": "Morning Kickoff",
+          "description": "A brief welcome to set the tone for Day 2, outlining the key themes and collaboration opportunities ahead.",
           "start": "09:00",
           "end": "09:15",
           "room": "Main Stage",
-          "track": "plenary"
+          "speakerIds": []
+        },
+        {
+          "id": "labs-round-1-environment",
+          "type": "workshop",
+          "track": "environment",
+          "title": "Environment Lab",
+          "description": "Hands-on workshop examining climate resilience strategies, emissions reduction pathways, and adaptation tools.",
+          "start": "10:00",
+          "end": "11:30",
+          "room": "Lab 1",
+          "speakerIds": ["leila-haddad"]
+        },
+        {
+          "id": "labs-round-1-food",
+          "type": "workshop",
+          "track": "food",
+          "title": "Food Impact Lab",
+          "description": "Workshop on satellite-enabled precision agriculture, crop monitoring and food security applications.",
+          "start": "10:00",
+          "end": "11:30",
+          "room": "Lab 2",
+          "speakerIds": ["priya-nair"]
+        },
+        {
+          "id": "labs-round-1-energy",
+          "type": "workshop",
+          "track": "energy",
+          "title": "Energy Impact Lab",
+          "description": "Workshop exploring space-based solar monitoring and grid optimisation for the energy transition.",
+          "start": "10:00",
+          "end": "11:30",
+          "room": "Lab 3",
+          "speakerIds": ["hiroshi-tanaka"]
+        },
+        {
+          "id": "labs-round-1-urban",
+          "type": "workshop",
+          "track": "urban",
+          "title": "Urban Impact Lab",
+          "description": "Workshop on using Earth observation for smart, sustainable urban planning.",
+          "start": "10:00",
+          "end": "11:30",
+          "room": "Lab 4",
+          "speakerIds": ["tomas-novak"]
+        },
+        {
+          "id": "coffee-break-3",
+          "type": "break",
+          "track": "networking",
+          "title": "Coffee Break",
+          "description": "Refreshments and networking before the next round of workshops.",
+          "start": "11:30",
+          "end": "12:00",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "lunch-2",
+          "type": "break",
+          "track": "networking",
+          "title": "Lunch",
+          "description": "Networking lunch for all delegates.",
+          "start": "12:00",
+          "end": "13:00",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "keynote-day-2",
+          "type": "keynote",
+          "track": "keynote",
+          "title": "Keynote: Scaling Impact Across the Value Chain",
+          "description": "A perspective on building durable partnerships between space agencies, startups and end users.",
+          "start": "13:00",
+          "end": "13:45",
+          "room": "Room B",
+          "speakerIds": ["amara-okafor"]
+        },
+        {
+          "id": "panel-day-2",
+          "type": "panel",
+          "track": "economic",
+          "title": "Panel: Measuring Return on Impact",
+          "description": "How organisations quantify the sustainability and economic returns of space-enabled solutions.",
+          "start": "13:45",
+          "end": "14:45",
+          "room": "Room A",
+          "speakerIds": ["tomas-novak", "priya-nair"]
+        },
+        {
+          "id": "coffee-break-4",
+          "type": "break",
+          "track": "networking",
+          "title": "Coffee Break",
+          "description": "Refreshments and networking.",
+          "start": "14:45",
+          "end": "15:15",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "closing-day-2",
+          "type": "plenary",
+          "track": "plenary",
+          "title": "Day 2 Closing Remarks",
+          "description": "Summary of the day's themes and a look ahead to the final day.",
+          "start": "16:45",
+          "end": "17:00",
+          "room": "Main Stage",
+          "speakerIds": ["amara-okafor"]
+        }
+      ]
+    },
+    {
+      "id": "day-3",
+      "label": "Wednesday",
+      "date": "2025-10-17",
+      "sessions": [
+        {
+          "id": "day-3-kickoff",
+          "type": "plenary",
+          "track": "plenary",
+          "title": "Morning Kickoff",
+          "description": "Opening remarks for the final day of the Forum.",
+          "start": "09:00",
+          "end": "09:15",
+          "room": "Main Stage",
+          "speakerIds": []
+        },
+        {
+          "id": "keynote-day-3",
+          "type": "keynote",
+          "track": "keynote",
+          "title": "Closing Keynote: The Next Decade of Impact",
+          "description": "A forward-looking view on where sustainability-focused space applications are headed next.",
+          "start": "09:15",
+          "end": "10:00",
+          "room": "Room B",
+          "speakerIds": ["hiroshi-tanaka"]
+        },
+        {
+          "id": "coffee-break-5",
+          "type": "break",
+          "track": "networking",
+          "title": "Coffee Break",
+          "description": "Refreshments and networking.",
+          "start": "10:00",
+          "end": "10:30",
+          "room": "Lobby",
+          "speakerIds": []
+        },
+        {
+          "id": "closing-panel",
+          "type": "panel",
+          "track": "societal",
+          "title": "Closing Panel: Commitments & Collaboration",
+          "description": "Speakers and delegates share commitments and identify opportunities for continued collaboration after the Forum.",
+          "start": "10:30",
+          "end": "11:30",
+          "room": "Room A",
+          "speakerIds": ["amara-okafor", "leila-haddad", "hiroshi-tanaka", "tomas-novak", "priya-nair"]
+        },
+        {
+          "id": "closing-plenary",
+          "type": "plenary",
+          "track": "plenary",
+          "title": "Closing Plenary & Thank You",
+          "description": "Closing remarks and thanks to speakers, sponsors and delegates.",
+          "start": "11:30",
+          "end": "12:00",
+          "room": "Main Stage",
+          "speakerIds": []
         }
       ]
     }
