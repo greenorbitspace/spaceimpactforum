@@ -103,7 +103,59 @@ your real instance — field availability (tracks, rooms, presenter
 affiliations) can vary a bit by Indico version/config, so it's worth a real
 run before you rely on it.
 
+## PDF schedule download
 
+New: `src/pages/schedule.pdf.ts` + `src/lib/pdfSchedule.ts` generate a
+branded, multi-page A4 PDF of the full schedule at build time — live at
+`spaceimpactforum.com/schedule.pdf` — using [pdf-lib](https://pdf-lib.js.org/)
+(pure JS, no headless browser/Puppeteer needed, so it's safe to run in any
+CI environment including GitHub Pages Actions).
+
+**"Dynamically updated" means:** it's generated from the exact same
+`schedule.json`/`speakers.json` that drives the webpage and the `.ics` feed.
+Edit the data once, every output regenerates on the next `astro build` — same
+pattern as `schedule.ics.ts`, no separate PDF-maintenance step.
+
+**Styling:** colours and fonts are pulled directly from your actual
+`public/styles/global.css` (`--background-color`, `--accent-color`,
+`--contrast-color`, and the same per-track badge colours used on the
+webpage) rather than an assumed brand kit, so it matches what's actually
+live on the site today. Typography uses your real site fonts (Rubik for
+headings, Roboto for body).
+
+**Setup — one extra step vs. the rest of this update:** the PDF fonts need
+to be real `.ttf`/`.otf` binaries, not `.woff2` — I found that feeding
+`.woff2` straight to `pdf-lib` (even though it doesn't throw an error)
+produces a PDF that Poppler/Adobe-class renderers reject outright
+("Embedded font file may be invalid" on every text draw). `@fontsource`
+packages only ship `.woff`/`.woff2`, so I decompressed them with `wawoff2`
+into real `.ttf` files first — those are already included in
+`src/assets/fonts/pdf/` in this zip, so you don't need to redo that step.
+If you ever swap fonts, re-run that conversion rather than pointing at a
+`.woff2` directly.
+
+New dependencies (add to your `package.json` if not already merged in):
+```
+npm install pdf-lib@^1.17.1 @pdf-lib/fontkit@^1.1.1
+```
+(`@fontsource/roboto`, `@fontsource/rubik`, and `wawoff2` were only needed
+transiently to extract/convert the font files — not required at runtime
+since the converted `.ttf`s are committed to the repo.)
+
+I also found and fixed a subtler bug while testing: `pdf-lib` applies
+OpenType ligature substitution by default (e.g. "ff" → a single ligature
+glyph), which silently breaks copy/paste and PDF search for any word
+containing a ligature pair ("Coffee Break" extracted as "Co(cid:122)ee
+Break"). Ligatures are disabled on embed (`features: { liga: false, rlig:
+false }`) so search and accessibility tools read the text correctly.
+
+Validated with `qpdf --check` (no structural errors) and by rasterizing
+pages with `pdftoppm` to actually confirm the fonts render — worth doing
+again if you change fonts or layout, since a PDF can "successfully" build
+while still being broken for real-world viewers, as the ligature/woff2
+issues above show.
+
+## Notes / things to sanity-check on your end
 
 - `schedule.ics.ts` needs static output (which your `astro.config.mjs`
   already uses) — it's generated once at build time, not per-request, which
